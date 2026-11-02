@@ -67,6 +67,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .cover h1 .a{display:block;font-size:8.1cqw;color:var(--g-deep)}
 .cover h1 .b{display:block;font-size:12.6cqw;color:var(--g);margin-top:1cqw}
 .cover .en{position:absolute;right:13.5%;top:32%;font-family:var(--en);font-weight:500;font-size:2.8cqw;color:var(--g-deep)}
+.cover .sig{position:absolute;right:13.5%;top:35.2%;font-family:var(--en);font-weight:500;font-size:2.1cqw;color:var(--paper);user-select:text;cursor:text}
+.cover .sig::selection{background:var(--g);color:#fff}
 .cover .pill{position:absolute;left:6.3%;top:80.3%;width:46%;height:7.4%;display:flex;align-items:center}
 .cover .pill .globe{position:absolute;left:0;top:50%;transform:translateY(-50%);width:10.2cqw;height:10.2cqw;border-radius:50%;background:#56ad5c;border:.7cqw solid #e8f3e6;display:grid;place-items:center;z-index:1;box-shadow:0 0 0 .4cqw #3f9946}
 .cover .pill .globe svg{width:6cqw;height:6cqw}
@@ -423,6 +425,11 @@ td b{font-weight:700}
 .orl span{font-size:15px;opacity:.6}
 tr.flash td{animation:flash 1.6s ease-out}
 .cmp > div.flash,.pg.flash{animation:flash 1.6s ease-out}
+.rsum{margin:0;font-weight:800;color:var(--g-deep);font-size:15px}
+.rsum small{display:block;font-weight:500;color:var(--muted);font-size:12.5px;margin-top:2px}
+.info-hits .snip{display:block;font-weight:500;font-size:13px;color:#4b5563;margin-top:3px}
+.info-hits mark{background:#fff1a8;color:inherit;border-radius:3px;padding:0 2px}
+.note li.flash,.jt-card li.flash,.org-b li.flash{animation:flash 1.6s ease-out}
 @media (prefers-reduced-motion:reduce){.star .pt{animation:none}}
 /* 용인시 지도 + 기관 목록 */
 .ymap-wrap{display:grid;gap:10px}
@@ -604,7 +611,7 @@ const S = [
   blocks:[
   {id:'unemp', type:'tree', title:'지역사회 생활 유형', meta:'항목을 누르면 지도·목록으로 가요', root:'지역사회 생활 유형', items:[
     ['거주시설',[['단기거주시설','siseol','gg-res','단기거주시설'],['공동생활가정(그룹홈)','siseol','gg-res','공동생활가정']],'','home','생활하며 지내는 곳'],
-    ['지역사회 재활시설',[['장애인복지관','siseol','local','복지관'],'맞춤형센터',['발달장애인훈련센터','hullyeon','dtc-map'],['직업적응훈련시설','chwieop','rehab','직업적응훈련시설'],['주간활동시설','bokji','local','주간활동'],['주간보호시설','siseol','local','주간']],'','book','낮 동안 다니며 배우는 곳'],
+    ['지역사회 재활시설',[['장애인복지관','siseol','local','복지관'],['맞춤형센터','siseol','local'],['발달장애인훈련센터','hullyeon','dtc-map'],['직업적응훈련시설','chwieop','rehab','직업적응훈련시설'],['주간활동시설','bokji','local','주간활동'],['주간보호시설','siseol','local','주간']],'','book','낮 동안 다니며 배우는 곳'],
     ['가정',[['가정에서 생활하며 복지서비스 이용','bokji','local']],'','heart','집에서 지내는 경우']
   ]},
   {id:'dtc', type:'note', title:'지역사회 교육 및 훈련기관', org:'[기관명: 발달장애인훈련센터 - 고용노동부 산하기관]', items:[
@@ -704,7 +711,7 @@ const S = [
     ['서비스를 신청할 수 있는 상황',['보호자가 병원에 입원해야 하는 상황','보호자가 결혼식이나 장례식에 가야 하는 상황','보호자가 몸과 마음이 지치고 힘들어서 발달장애인을 돌보지 못하는 상황','보호자가 갑작스러운 사고나 재난을 당해서 발달장애인을 돌보지 못하는 상황']],
     ['서비스를 이용할 수 있는 사람',['6살부터 64세까지 발달장애인이라면 누구나 이용 가능']],
     ['이용 제한이 있는 사람',['장애인거주시설에서 생활하는 사람','전문적인 의료지원이 필요한 사람(주사, 석션, 투석 등)','감염병 질환이 있는 사람','가족이나 친척이 없는 사람']],
-    ['서비스 신청 방법 및 이용 비용 등 자세한 문의',['경기발달장애인지원센터 @031-895-6163','경기발달장애인긴급돌봄센터: 지원센터로 먼저 문의하세요 (책자에 적힌 번호가 다른 기관 번호로 확인되어 뺐어요)']]
+    ['서비스 신청 방법 및 이용 비용 등 자세한 문의',['경기발달장애인지원센터 (대표전화) @031-548-1393','경기발달장애인긴급돌봄센터: 지원센터로 먼저 문의하세요']]
   ]},
   {id:'after', type:'places', kind:'tel', title:'발달장애인 방과후활동서비스', items:[
     ['예지원가족발달연구소','','처인','031-322-8485'],
@@ -995,6 +1002,7 @@ function home(){
       <div class="logo"><img src="img/emblem-full.png" alt=""><span>용인강남학교</span></div>
       <h1><span class="a">진로·진학정보</span><span class="b">안내</span></h1>
       <div class="en">Career &amp; College Guidance</div>
+      <div class="sig" aria-hidden="true">@lee_hyangrim @park_jonghwa copyright</div>
       <div class="pill"><span class="globe"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18M5 7h14M5 17h14"/></svg></span><span class="txt"><b>용인강남학교</b><span>kangnam-s.goeyi.kr</span></span></div>
       <div class="pub">제작·발행 용인강남학교 진로직업부</div>
     </div>
@@ -1068,6 +1076,7 @@ function find(){
           <input id="q" type="search" placeholder="기관 이름이나 하고 싶은 일로 검색해 보세요" aria-label="기관 이름이나 하고 싶은 일로 검색" autocomplete="off" value="${esc(findState.q)}"></div>
         <div class="sug" aria-label="이런 낱말로 찾아보세요">${['제과제빵','바리스타','포장','주간활동','방과후','긴급돌봄','전공과','장애인일자리'].map(w=>`<button type="button" data-q="${w}">${w}</button>`).join('')}</div>
       </section>
+      <div id="rtop" class="res" aria-live="polite"></div>
       <section class="blk"><div class="blk-h"><h3>우리 동네에서 찾기</h3><span class="meta">지도에서 구를 눌러 보세요</span></div><div id="mapbox"></div></section>
       <div id="results" class="res" aria-live="polite"></div>
     </div>
@@ -1076,22 +1085,41 @@ function find(){
   $('#q').addEventListener('input', e=>{findState.q=e.target.value.trim(); updateFind();});
   updateFind(); scrollTo(0,0);
 }
+const SYN=[
+  ['미술','그림','화가','미술관','아트','디자인','공예'],
+  ['합창','노래','음악','공연','문화예술','악기'],
+  ['수영','탁구','농구','배드민턴','체육','운동','스포츠'],
+  ['요리','제과','제빵','빵','쿠키','식기','급식','카페','바리스타','커피'],
+  ['청소','미화','환경정리','위생','방역','소독'],
+  ['컴퓨터','사무','행정','IT','정보기술','디자인'],
+  ['농사','농업','화훼','식물','조경','농산물','원예','텃밭'],
+  ['포장','조립','제조','쇼핑백','봉투'],
+  ['돌봄','긴급돌봄','주간활동','방과후','주간보호'],
+  ['대학','전공과','평생교육','진학']
+];
+function terms(t){ const out=new Set([t]); SYN.forEach(g=>{ if(g.some(w=>w===t||t.includes(w)||w.includes(t)&&t.length>=2)) g.forEach(w=>out.add(w)); }); return [...out]; }
 function updateFind(){
   const {q,gu}=findState;
-  const t=q.replace(/구$/,'');
-  const hits = ALL.filter(h=>(!gu||h.x[2]===gu) && (!t || (h.x[0]+h.x[1]+h.b.title+GU[h.x[2]]).includes(t)));
+  const t=q.replace(/구$/,'').trim();
+  const T=t?terms(t):[];
+  const hit=txt=>!t||T.some(w=>txt.includes(w));
+  const hits = ALL.filter(h=>(!gu||h.x[2]===gu) && hit(h.x[0]+' '+h.x[1]+' '+h.b.title+' '+GU[h.x[2]]+' '+(h.x[4]||'')));
   const groups=new Map();
   hits.forEach(h=>{ if(!groups.has(h.b)) groups.set(h.b,{s:h.s,b:h.b,items:[]}); groups.get(h.b).items.push(h.x); });
   let info=[];
   if(t){ S.forEach(s=>s.blocks.forEach(b=>{ if(b.type==='places') return;
-      const txt=strip(JSON.stringify([b.title,b.org,b.items,b.rows,b.groups,b.root]));
-      if(txt.includes(t)) info.push({s,b}); })); }
+      const txt=strip(JSON.stringify([b.title,b.org,b.items,b.rows,b.groups,b.root])).replace(/[\[\]",]+/g,' ').replace(/\b(null|bldg|tool|shop|bag|art|home|book|heart|cap|cy|find|siseol|bokji|hullyeon|chwieop|jinhak|local|gg-res|rehab|univ|dtc-map)\b/g,' ').replace(/(^|\s)\d{1,2}(?=\s)/g,' ').replace(/\s+/g,' ');
+      const w=T.find(w=>txt.includes(w)); if(!w) return;
+      const k=txt.indexOf(w); const snip=(k>18?'…':'')+txt.slice(Math.max(0,k-18),k+w.length+22).trim()+'…';
+      info.push({s,b,snip,w}); })); }
   $('#mapbox').innerHTML = mapBlock('find', gu, `${gu?GU[gu]:'용인시 전체'}${t?` · ‘${esc(q)}’`:''} — 기관 ${hits.length}곳`, (()=>{const m=new Map();(t?hits:ALL).forEach(h=>{if(!m.has(h.b))m.set(h.b,{b:h.b,items:[]});m.get(h.b).items.push(h.x);});return [...m.values()];})());
   let html='';
-  if(info.length) html+=`<section><h4>안내 ${info.length}건</h4><ul class="info-hits">${info.map(({s,b})=>`<li><a href="#${s.id}" data-jump="${b.id}"><small>${s.title}</small>${b.title||strip(b.org).replace(/\[기관명: |\]/g,'')} →</a></li>`).join('')}</ul></section>`;
+  if(t) html+=`<p class="rsum">‘${esc(q)}’ 검색 결과: 안내 ${info.length}건, 기관 ${hits.length}곳${T.length>1?`<small>비슷한 말도 함께 찾았어요: ${T.filter(w=>w!==t).slice(0,6).join(', ')}</small>`:''}</p>`;
+  if(info.length) html+=`<section><h4>안내 ${info.length}건</h4><ul class="info-hits">${info.map(({s,b,snip,w})=>`<li><a href="#${s.id}" data-jump="${b.id}" data-hl="${esc(w)}"><small>${s.title}</small>${b.title||strip(b.org).replace(/\[기관명: |\]/g,'')} →<span class="snip">${esc(snip).replace(esc(w),`<mark>${esc(w)}</mark>`)}</span></a></li>`).join('')}</ul></section>`;
   html+=placeGroups([...groups.values()], true);
-  if(!html) html=`<p class="empty">찾는 내용이 없어요. 다른 낱말로 찾거나 ‘전체’를 눌러 보세요.</p>`;
-  $('#results').innerHTML = html;
+  if(t && !info.length && !hits.length) html+=`<p class="empty">‘${esc(q)}’에 맞는 내용이 없어요. 다른 낱말로 찾거나 아래 지도에서 구를 눌러 보세요.</p>`;
+  if(t){ $('#rtop').innerHTML=html; $('#results').innerHTML=''; }
+  else { $('#rtop').innerHTML=''; $('#results').innerHTML=html; }
 }
 
 /* ---------- 졸업 후 우리 아이가 갈 수 있는 곳? ---------- */
@@ -1120,7 +1148,7 @@ function guide(){
     {id:'bokji',n:'5',t:'복지 서비스',one:'어느 길을 가든 함께',
      who:'모든 발달장애인 학생과 가족',
      what:'<b>방과후활동서비스</b>: 학교에 다니는 동안 방과 후 시간<br><b>주간활동서비스</b>: 졸업 후 낮 시간 활동<br><b>긴급돌봄서비스</b>: 보호자가 입원, 경조사, 지침 등으로 돌볼 수 없을 때 (6~64세, 최대 7일)',
-     when:'긴급돌봄 문의: 경기발달장애인지원센터 031-895-6163',
+     when:'긴급돌봄 문의: 경기발달장애인지원센터 대표전화 031-548-1393',
      next:'진학·취업·훈련·시설 어느 길과도 <b>함께</b> 이용할 수 있어 메뉴 가운데에 두었어요.'}
   ];
   app.innerHTML = `<div class="page">${WAVE_TL}<div class="gut"><div class="inner">
@@ -1172,7 +1200,7 @@ function guide(){
       <section class="blk"><div class="blk-h"><h3>막막할 때 먼저 물어볼 곳</h3></div>
         <div class="note"><ul>
           <li>담임 선생님, 용인강남학교 진로직업부</li>
-          <li>경기발달장애인지원센터 ${telHTML('031-895-6163')}</li>
+          <li>경기발달장애인지원센터 (대표전화) ${telHTML('031-548-1393')}</li>
           <li>장애인일자리: 사는 곳 구청의 장애인일자리 담당자</li>
         </ul></div>
       </section>
@@ -1235,7 +1263,7 @@ document.addEventListener('click', e=>{
 });
 function flashHL(id,hl){
   const box=document.getElementById(id==='local'?'local':id); if(!box) return;
-  const els=[...box.querySelectorAll('tr, .pcards li, .cmp > div, .pg')].filter(e=>e.textContent.includes(hl));
+  const els=[...box.querySelectorAll('tr, .pcards li, .cmp > div, .pg, .note li li, .note > ul > li, .jt-card li, .org-b li')].filter(e=>e.textContent.includes(hl));
   const t=els[0]; if(!t) return;
   t.scrollIntoView({behavior:'smooth',block:'center'});
   els.slice(0,6).forEach(e=>{ e.classList.remove('flash'); void e.offsetWidth; e.classList.add('flash'); });
