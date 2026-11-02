@@ -311,6 +311,10 @@ td b{font-weight:700}
 .star-test small{display:block;font-size:13px;opacity:.88;margin-top:2px}
 .star-test .ar{font-size:22px;font-weight:700}
 .star-test:hover{filter:brightness(1.05)}
+.star-test.gd{background:linear-gradient(120deg,#2e8b3e,#47a552 55%,#6cc070);box-shadow:0 10px 24px -10px rgba(46,139,62,.55)}
+.star-test.gd + .star-test{margin-top:12px}
+.star-test b,.star-test small{word-break:keep-all;text-wrap:balance}
+.star-test.gd b{font-size:17px}
 /* 성향 파악하기 */
 .tests{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 @media (max-width:620px){.tests{grid-template-columns:minmax(0,1fr)}}
@@ -723,7 +727,7 @@ const S = [
     ['사단법인 하울회 용인지부','','수지','031-272-8569'],
     ['해누리센터','','수지','031-897-8885'],
     ['아이비전','','수지','070-4233-4001'],
-    ['WE:MILY 특수지원센터 동백점','','기흥','010-7543-8776'],
+    ['WE:MILY(위밀리) 특수지원센터 동백점','','기흥','010-7543-8776'],
     ['주스아이아동발달연구소','','기흥','010-3630-9531'],
     ['라온아동발달센터','','기흥','031-216-4474 · 010-8272-4474']
   ]},
@@ -736,7 +740,7 @@ const S = [
     ['사단법인 하울회 용인지부','','수지','031-272-8569'],
     ['해누리센터','','수지','031-897-8885'],
     ['아이비전','','수지','070-4233-4001'],
-    ['WE:MILY 특수지원센터 동백점','','기흥','010-7543-8776'],
+    ['WE:MILY(위밀리) 특수지원센터 동백점','','기흥','010-7543-8776'],
     ['기흥장애인복지관','','기흥','031-895-3250'],
     ['주스아이아동발달연구소','','기흥','010-3630-9531'],
     ['틔움통합발달센터','','기흥','031-281-3837']
@@ -1017,6 +1021,10 @@ function starPage(){
     <p class="star-sub">궁금한 곳을 눌러 보세요</p>
     ${star()}
     <p class="star-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg>검색에서는 기관 이름이나 하고 싶은 일로 찾을 수 있어요</p>
+    <a class="star-test gd" href="#guide">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4z"/><path d="M9 4v14M15 6v14"/></svg></span>
+      <span class="tx"><b>한눈에 보는 졸업 후 갈 수 있는 곳!</b><small>진학·취업·훈련·시설·복지 한 번에 알아보기</small></span>
+      <span class="ar" aria-hidden="true">→</span></a>
     <a class="star-test" href="#test">
       <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V18h5v-1.6c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3.5z"/><path d="M9.8 21h4.4"/></svg></span>
       <span class="tx"><b>우리 아이 성향 파악하기</b><small>그림직업흥미검사 · 재미로 보는 용인강남 MBTI</small></span>
@@ -1081,7 +1089,7 @@ function find(){
       <section class="blk"><div class="blk-h"><h3>우리 동네에서 찾기</h3><span class="meta">지도에서 구를 눌러 보세요</span></div><div id="mapbox"></div></section>
       <div id="results" class="res" aria-live="polite"></div>
     </div>
-    <nav class="pager"><a href="#star"><small>← 처음으로</small>전체 도표</a><a class="nx" href="#guide"><small>더 알아보기 →</small>갈 수 있는 곳 한눈에</a></nav>
+    <nav class="pager"><a href="#star"><small>← 처음으로</small>전체 도표</a><a class="nx" href="#guide"><small>더 알아보기 →</small>한눈에 보는 졸업 후 갈 수 있는 곳</a></nav>
   </div></div>${WAVE_BR}</div>`;
   $('#q').addEventListener('input', e=>{findState.q=e.target.value.trim(); updateFind();});
   updateFind(); scrollTo(0,0);
@@ -1098,13 +1106,15 @@ const SYN=[
   ['돌봄','긴급돌봄','주간활동','방과후','주간보호'],
   ['대학','전공과','평생교육','진학']
 ];
+const TAGS=[[/위밀리|WE:MILY/,'위밀리 wemily'],[/장애인복지관/,'수영 체육 운동 스포츠 탁구 프로그램']];
+function tagsOf(n){ return TAGS.filter(([r])=>r.test(n)).map(([,t])=>t).join(' '); }
 function terms(t){ const out=new Set([t]); SYN.forEach(g=>{ if(g.some(w=>w===t||t.includes(w)||w.includes(t)&&t.length>=2)) g.forEach(w=>out.add(w)); }); return [...out]; }
 function updateFind(){
   const {q,gu}=findState;
   const t=q.replace(/구$/,'').trim();
   const T=t?terms(t):[];
   const hit=txt=>!t||T.some(w=>txt.includes(w));
-  const hits = ALL.filter(h=>(!gu||h.x[2]===gu) && hit(h.x[0]+' '+h.x[1]+' '+h.b.title+' '+GU[h.x[2]]+' '+(h.x[4]||'')));
+  const hits = ALL.filter(h=>(!gu||h.x[2]===gu) && hit(h.x[0]+' '+h.x[1]+' '+h.b.title+' '+GU[h.x[2]]+' '+(h.x[4]||'')+' '+tagsOf(h.x[0])));
   const groups=new Map();
   hits.forEach(h=>{ if(!groups.has(h.b)) groups.set(h.b,{s:h.s,b:h.b,items:[]}); groups.get(h.b).items.push(h.x); });
   let info=[];
