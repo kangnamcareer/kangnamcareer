@@ -1,0 +1,1255 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1f9e3b">
+<meta name="description" content="용인강남학교 진로직업부 진로·진학정보 안내 — 진학, 취업, 교육 및 훈련기관, 지역사회 유관시설, 복지서비스">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="진로진학정보">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>용인강남학교 진로·진학정보</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&family=Red+Hat+Display:wght@400;500;700&display=swap">
+<style>
+/* 레이아웃: 2025 책자 디자인 그대로 — 표지 → 오각형 메뉴(복지 중심) → 목차 → 섹션 페이지(매달린 제목, 초록 물결, 보라 테두리 표).
+   책자가 밝은 종이 한 가지라 라이트 단일 테마로 고정 */
+:root{
+  color-scheme:light;
+  --bg:#ffffff; --paper:#f4f4f2; --ink:#1c1d1f; --muted:#5b5f57;
+  --g-deep:#0e4a22; --g:#1f9e3b; --g-soft:#47a552; --lime:#8dc63f;
+  --purple:#c25fd6; --navy:#0a47ad; --blue:#2b3be0;
+  --tline:#4a2bd0; --th1:#cffbe1; --th2:#97b8fb;
+  --note:#f7f6ee; --note-line:#a5a679; --olive:#6b7a2b;
+  --peach:#fde9c9; --mint:#c9fff7; --lav:#cdd0ff; --leafbg:#e2f3d3;
+  --kr:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --en:"Red Hat Display","Noto Sans KR",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:var(--kr);font-size:16px;line-height:1.6;word-break:keep-all;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:820px;margin:0 auto}
+
+/* 상단 학교 띠 (모든 화면) */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:8;background:var(--bg);border-bottom:1px solid #e6e8e3}
+.bar .inner{display:flex;align-items:center;gap:10px;padding-block:8px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);min-width:0}
+.brand img{height:38px;width:auto;flex:none}
+.brand b{font-weight:900;font-size:19px;letter-spacing:-.01em;white-space:nowrap}
+.bar .sp{flex:1}
+.iconbtn{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font-size:14px;font-weight:700;color:var(--g-deep);padding:7px 11px;border-radius:99px;border:1.5px solid #cfe3cf;background:#fff}
+.iconbtn svg{width:17px;height:17px}
+
+/* 표지 */
+.cover{position:relative;width:100%;max-width:600px;margin:0 auto;aspect-ratio:952/1233;container-type:inline-size;overflow:hidden;background:var(--paper)}
+.cover .ring{position:absolute;border-radius:50%;border:5cqw solid rgba(0,0,0,.035)}
+.cover .fill{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover .ph1{clip-path:polygon(0 12.2%,4% 9.6%,52% 46.9%,25.2% 67.3%,0 67.3%);object-position:30% 50%}
+.cover .gold{position:absolute;inset:0;background:rgba(240,196,60,.55);clip-path:polygon(21% 30.5%,52% 46.9%,48.5% 49.4%,16% 34%)}
+.cover .tri{position:absolute;inset:0;background:linear-gradient(150deg,#46c050 0%,#1f9e3b 35%,#0b4a1f 100%);clip-path:polygon(0 50.3%,58.8% 100%,0 100%)}
+.cover .tri2{position:absolute;inset:0;background:rgba(160,230,120,.35);clip-path:polygon(0 50.3%,2.2% 50.3%,24% 70%,0 58%)}
+.cover .ph2w{position:absolute;inset:0;background:#fff;clip-path:polygon(40% 49.6%,88.6% 49.6%,100% 62.8%,100% 100%,55.4% 100%,26.6% 73.2%)}
+.cover .ph2{clip-path:polygon(41.5% 50.7%,87.7% 50.7%,100% 64.1%,100% 100%,56.7% 100%,28.4% 73%);object-position:50% 70%}
+.cover .leaves{position:absolute;left:55%;top:43%;width:45%;pointer-events:none}
+.cover .logo{position:absolute;right:13.5%;top:6%;display:flex;align-items:center;gap:1.3cqw}
+.cover .logo img{height:5.2cqw}
+.cover .logo span{font-weight:700;font-size:4.1cqw;color:#111;letter-spacing:-.02em}
+.cover h1{position:absolute;right:13.5%;top:13.2%;margin:0;text-align:right;font-weight:900;letter-spacing:-.03em;line-height:1.05}
+.cover h1 .a{display:block;font-size:8.1cqw;color:var(--g-deep)}
+.cover h1 .b{display:block;font-size:12.6cqw;color:var(--g);margin-top:1cqw}
+.cover .en{position:absolute;right:13.5%;top:32%;font-family:var(--en);font-weight:500;font-size:2.8cqw;color:var(--g-deep)}
+.cover .pill{position:absolute;left:6.3%;top:80.3%;width:46%;height:7.4%;display:flex;align-items:center}
+.cover .pill .globe{position:absolute;left:0;top:50%;transform:translateY(-50%);width:10.2cqw;height:10.2cqw;border-radius:50%;background:#56ad5c;border:.7cqw solid #e8f3e6;display:grid;place-items:center;z-index:1;box-shadow:0 0 0 .4cqw #3f9946}
+.cover .pill .globe svg{width:6cqw;height:6cqw}
+.cover .pill .txt{margin-left:5cqw;flex:1;height:100%;border-radius:99px;background:linear-gradient(180deg,#f7f7f7,#e2e2e2);border:.6cqw solid #3f9e46;border-left:0;padding-left:7.5cqw;display:flex;flex-direction:column;justify-content:center;line-height:1.25}
+.cover .pill b{font-size:2.3cqw;font-weight:900}
+.cover .pill span{font-family:var(--en);font-size:2.2cqw}
+.cover .pub{position:absolute;left:7.9%;bottom:2.4%;color:#fff;font-size:1.6cqw;font-weight:500}
+
+/* 오각형 메뉴 */
+.hub{padding-block:34px 10px;text-align:center}
+.hub h2{margin:0;font-weight:900;font-size:clamp(22px,5.6vw,30px);color:var(--g-deep);letter-spacing:-.02em;text-wrap:balance}
+.hub p{margin:6px auto 0;color:var(--muted);font-size:15px;max-width:30em}
+.penta{display:block;width:100%;max-width:470px;margin:14px auto 0;overflow:visible}
+.penta a{cursor:pointer}
+.penta .seg{stroke:#fff;stroke-width:5;stroke-linejoin:round;transition:filter .15s}
+.penta a:hover .seg,.penta a:focus .seg{filter:brightness(.92)}
+.penta a:focus{outline:none}
+.penta a:focus-visible .seg{stroke:var(--navy);stroke-width:5}
+.penta text{font-family:var(--kr);text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+.penta .lb{font-weight:900;font-size:19px;fill:#1c1d1f}
+.penta .nb{font-family:var(--en);font-weight:700;font-size:12px;fill:var(--olive)}
+.penta .hint{font-size:11.5px;fill:#3d4038;font-weight:500}
+.penta .ctr{font-weight:900;font-size:19px;fill:#fff}
+.penta .ctr2{font-size:10.5px;fill:#e5f7df;font-weight:500}
+.cta{display:grid;gap:10px;margin:22px auto 0;max-width:520px}
+.cta a{display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;padding:16px 20px;border-radius:20px;font-weight:900;font-size:17px;text-align:left}
+.cta .q{background:var(--g);color:#fff}
+.cta .m{background:#fff;color:var(--g-deep);border:2px solid var(--g)}
+.cta small{display:block;font-weight:500;font-size:13px;opacity:.85;margin-top:2px}
+
+/* 목차 */
+.toc{display:grid;grid-template-columns:auto 1fr;gap:10px 34px;padding-block:40px;max-width:720px;margin:0 auto}
+.toc .vt{writing-mode:vertical-rl;font-weight:900;font-size:clamp(40px,9vw,72px);color:var(--olive);letter-spacing:-.04em;line-height:1;transform:rotate(180deg);text-align:right}
+.toc ol{list-style:none;margin:0;padding:0;min-width:0}
+.toc li a{display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center;padding:16px 0 14px;border-bottom:1.5px solid var(--olive);text-decoration:none}
+.toc li b{font-weight:900;font-size:20px;color:var(--olive)}
+.toc li span{grid-column:1;font-size:14.5px;color:#222}
+.toc li em{grid-row:1/3;grid-column:2;font-style:normal;font-family:var(--en);font-weight:700;font-size:52px;color:var(--olive);line-height:1}
+@media (max-width:520px){.toc{grid-template-columns:1fr}.toc .vt{writing-mode:horizontal-tb;transform:none;text-align:left;font-size:30px}}
+
+/* 마지막 장 */
+.end{background:#f7f7f7;padding-block:44px 52px;text-align:center}
+.end img{width:150px;height:auto}
+.end .mot{font-family:var(--en);font-size:19px;margin-top:6px}
+.share{display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:28px;text-align:left}
+.share .qrbox{background:#fff;padding:10px;border-radius:12px;border:1px solid #ddd}
+.share p{margin:0;max-width:16em;font-size:14px;color:var(--muted)}
+.share b{color:var(--ink);display:block;font-size:15px}
+.end .pub{font-size:13px;color:var(--muted);margin-top:26px}
+
+/* 섹션 페이지 */
+.page{position:relative;overflow:hidden;padding-bottom:20px}
+.wave-tl{position:absolute;left:0;top:0;width:clamp(130px,30vw,290px);height:auto;pointer-events:none}
+.wave-br{display:block;width:clamp(150px,34vw,300px);height:auto;margin-left:auto;margin-top:24px}
+.hang{position:relative;display:flex;justify-content:center;padding-top:44px;margin-bottom:30px;z-index:1}
+.hang .p{position:relative;background:#fff;border:4px solid var(--navy);border-radius:24px;padding:16px 34px;font-weight:900;font-size:clamp(22px,5.4vw,28px);color:var(--purple);letter-spacing:-.02em;text-align:center;max-width:92%}
+.hang .p::before,.hang .p::after{content:"";position:absolute;top:-48px;width:1.5px;height:48px;background:#111}
+.hang .p::before{left:12%}.hang .p::after{right:12%}
+.hang .d{position:absolute;top:-5px;width:9px;height:9px;border-radius:50%;background:#111}
+.content{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);gap:34px}
+[hidden]{display:none!important}
+.blk{scroll-margin-top:70px;min-width:0}
+.blk-h{display:flex;align-items:baseline;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;margin:0 0 10px}
+.blk-h h3{margin:0;font-weight:700;font-size:18px;letter-spacing:-.01em;display:flex;gap:9px;align-items:baseline}
+.blk-h h3::before{content:"";width:7px;height:7px;border-radius:50%;background:#111;flex:none;transform:translateY(-3px)}
+.blk-h .meta{font-size:13.5px;color:#333}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums;background:#fff}
+th,td{border:1.5px solid var(--tline);padding:10px 10px;text-align:center;vertical-align:middle}
+th{background:linear-gradient(90deg,var(--th1),var(--th2));font-weight:700;color:#111}
+td.l{text-align:left}
+td b{font-weight:700}
+.wide table{min-width:600px}
+.tnote{font-size:13px;color:var(--muted);margin:8px 2px 0}
+.note{background:var(--note);border:2px solid var(--note-line);border-radius:20px;padding:16px 20px 16px 18px}
+.note ul{margin:0;padding-left:1.15em}
+.note li+li{margin-top:5px}
+.note .org{color:var(--blue);margin:0 0 6px;font-weight:500}
+.note .star{color:var(--blue);margin:8px 0 0}
+.go{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-weight:700;font-size:14.5px;text-decoration:none;color:var(--navy);padding:7px 14px;border:1.5px solid var(--navy);border-radius:99px;background:#fff}
+.qr{display:none}
+@media (min-width:760px){.qr{display:block;margin:8px auto 2px}}
+.qrcell{display:flex;flex-direction:column;align-items:center;gap:2px}
+.qrcell .u{font-family:var(--en);font-weight:700;font-size:13px;color:#222}
+.qrcell .go{margin-top:0}
+
+/* 파이 */
+.pie{display:grid;grid-template-columns:minmax(0,220px) 1fr;gap:18px;align-items:center;border:1.5px solid #888;padding:18px;margin-top:16px;background:#fff}
+.pie h4{grid-column:1/-1;margin:0;text-align:center;font-size:18px;font-weight:900}
+.pie svg{width:100%;height:auto}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:5px;font-size:14px}
+.pie li{display:flex;gap:8px;align-items:center}
+.pie li i{width:11px;height:11px;flex:none}
+.pie li b{margin-left:auto;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.pie{grid-template-columns:1fr}.pie svg{max-width:220px;margin:0 auto}}
+.rate{text-align:center;padding:14px;border:1.5px solid var(--tline);border-top:0;background:#fff}
+.rate b{font-size:20px;color:var(--g)}
+
+/* 진학/지역사회 생활 유형 트리 */
+.tree{display:grid;grid-template-columns:auto 1fr;gap:12px 14px;align-items:center;background:#f2f2f2;padding:16px;border-radius:4px}
+.tree .root{grid-row:1/span 9;align-self:center;border:2px solid #2a8be0;background:#fff;padding:14px 16px;font-weight:700;font-size:17px;text-align:center}
+.tree .br{display:grid;grid-template-columns:minmax(84px,auto) 1fr;gap:8px 12px;align-items:center;position:relative}
+.tree .mid{border:2px solid #2a8be0;background:#e3e9f7;padding:10px 12px;font-weight:700;text-align:center}
+.tree .mid.cy{background:#c9fff7}
+.tree .leaves{display:grid;gap:8px}
+.tree .leaf{border:2px solid #2a8be0;background:#fff;padding:8px 12px;font-weight:700;text-align:center;font-size:15px}
+.tree .leaf.cy{background:#c9fff7}
+@media (max-width:520px){.tree{grid-template-columns:1fr}.tree .root{grid-row:auto}.tree .br{grid-template-columns:1fr;padding-left:14px;border-left:2px solid #2a8be0}}
+
+/* 취업유형 */
+.jt{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;align-items:center}
+.jt .c{grid-column:span 2;border:2px solid #111;border-radius:22px;padding:16px 12px;text-align:center;min-width:0}
+.jt .c em{display:block;font-style:normal;font-family:var(--en);font-weight:700;font-size:18px}
+.jt .c b{display:block;font-weight:900;font-size:17px;margin:2px 0 6px}
+.jt .c p{margin:0;font-size:13.5px;line-height:1.5}
+.jt .ctr{grid-column:1/-1;text-align:center;font-weight:900;font-size:clamp(30px,7vw,44px);letter-spacing:-.03em;order:3}
+.jt .c:nth-child(1){order:1}.jt .c:nth-child(2){order:2}.jt .c:nth-child(3){order:2}
+.jt .c:nth-child(4){order:4;grid-column:2/span 2}.jt .c:nth-child(5){order:5}
+.jt .c:nth-child(2){transform:translateY(-14px)}
+@media (max-width:620px){.jt{grid-template-columns:1fr 1fr}.jt .c,.jt .c:nth-child(4){grid-column:auto;order:4;transform:none}.jt .ctr{order:0}.jt .c:nth-child(5){grid-column:1/-1}}
+
+/* 재활시설 비교 카드 */
+.cmp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1.5px solid var(--tline)}
+.cmp>div{border-left:1.5px solid var(--tline);display:flex;flex-direction:column;min-width:0}
+.cmp>div:first-child{border-left:0}
+.cmp h4{margin:0;padding:12px;text-align:center;background:linear-gradient(90deg,var(--th1),var(--th2));font-weight:900;font-size:16.5px;border-bottom:1.5px solid var(--tline)}
+.cmp ul{margin:0;padding:12px 12px 12px 26px;font-size:14px;flex:1}
+.cmp .ft{border-top:1.5px solid var(--tline);padding:10px;text-align:center}
+@media (max-width:700px){.cmp{grid-template-columns:1fr}.cmp>div{border-left:0;border-top:1.5px solid var(--tline)}.cmp>div:first-child{border-top:0}}
+
+/* 구 필터, 전화 */
+.flt{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
+.flt button{font:inherit;font-size:14px;font-weight:700;padding:6px 14px;border-radius:99px;border:1.5px solid var(--tline);background:#fff;color:var(--tline);cursor:pointer}
+.flt button[aria-pressed="true"]{background:var(--tline);color:#fff}
+.tel{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.tel a{text-decoration:none;font-variant-numeric:tabular-nums;user-select:all}
+.cp{font:inherit;font-size:11.5px;border:1px solid #bbb;background:#fafafa;color:#555;padding:1px 7px;border-radius:7px;cursor:pointer}
+.cp.ok{border-color:var(--g);color:var(--g)}
+
+/* 넘기기 */
+.pager{display:flex;justify-content:space-between;gap:10px;margin-top:40px;position:relative;z-index:1}
+.pager a{flex:1;text-decoration:none;border:2px solid var(--g);border-radius:16px;padding:12px 16px;font-weight:900;color:var(--g-deep);font-size:16px}
+.pager a small{display:block;font-weight:500;font-size:12.5px;color:var(--muted)}
+.pager a.nx{text-align:right}
+
+/* 찾기 */
+.sbox{position:relative}
+.sbox input{width:100%;font:inherit;font-size:17px;padding:15px 16px 15px 46px;border-radius:16px;border:2.5px solid var(--g);background:#fff;color:var(--ink)}
+.sbox input::placeholder{color:#7b8076}
+@media (max-width:440px){.sbox input{font-size:15px;padding-left:42px}}
+.sbox svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:21px;height:21px;color:var(--g)}
+.sug{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.sug button{font:inherit;font-size:14px;border:1px solid #cfd7c8;background:var(--note);border-radius:99px;padding:5px 12px;cursor:pointer;color:#333}
+.mapwrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:center;margin-top:24px}
+@media (max-width:640px){.mapwrap{grid-template-columns:minmax(0,1fr)}}
+.map{width:100%;height:auto;display:block}
+.map .d{cursor:pointer;stroke:#fff;stroke-width:2.5;stroke-linejoin:round;transition:fill .15s}
+.map a:focus{outline:none}
+.map a:focus-visible .d{stroke:var(--navy);stroke-width:3.5}
+.map text{pointer-events:none;font-family:var(--kr)}
+.map .gu{font-weight:900;font-size:16px;fill:#0b2f2a;text-anchor:middle}
+.map .gu-en{font-family:var(--en);font-size:9px;fill:#0b2f2a;text-anchor:middle;font-weight:500}
+.map .em{font-size:11px;fill:#123;text-anchor:middle;font-weight:500}
+.map .em-en{font-family:var(--en);font-size:7.5px;fill:#234;text-anchor:middle}
+.map a.on text{fill:#fff}
+.side h3{margin:0 0 6px;font-size:18px;font-weight:900;color:var(--g-deep)}
+.side p{margin:0 0 12px;font-size:14.5px;color:var(--muted)}
+.res{margin-top:26px;display:grid;grid-template-columns:minmax(0,1fr);gap:26px}
+.res h4{margin:0 0 8px;font-size:16.5px;font-weight:900;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.res h4 small{font-weight:500;font-size:13px;color:var(--muted)}
+.res h4 a{font-size:13px;font-weight:700;color:var(--navy)}
+.cnt{font-size:15px;font-weight:700;color:var(--g-deep)}
+.info-hits{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.info-hits a{display:block;text-decoration:none;padding:12px 16px;border:2px solid var(--note-line);background:var(--note);border-radius:16px;font-weight:700}
+.info-hits small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.empty{color:var(--muted);padding:12px 0}
+
+/* 안내(관계) 페이지 */
+.q-title{text-align:center;font-weight:900;font-size:clamp(26px,6.6vw,38px);letter-spacing:-.03em;color:var(--g-deep);margin:0 0 8px;text-wrap:balance}
+.lead{max-width:36em;margin:0 auto;text-align:center;color:#333;font-size:16px}
+.flow{display:grid;gap:12px;margin-top:26px}
+.flow .start{justify-self:center;background:var(--g-deep);color:#fff;font-weight:900;padding:12px 26px;border-radius:99px;font-size:17px}
+.flow .arrow{justify-self:center;width:2px;height:22px;background:var(--g-deep);position:relative}
+.flow .arrow::after{content:"";position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--g-deep);border-bottom:0}
+.paths{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:700px){.paths{grid-template-columns:1fr 1fr}}
+.paths a{display:flex;flex-direction:column;gap:4px;text-decoration:none;border:2px solid #111;border-radius:20px;padding:14px 12px;text-align:center;min-width:0}
+.paths a b{font-weight:900;font-size:17px}
+.paths a span{font-size:13.5px;line-height:1.45}
+.paths a i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--navy);margin-top:auto;padding-top:6px}
+.wel{display:block;text-decoration:none;background:linear-gradient(135deg,#2bab45,#0e4a22);color:#fff;border-radius:22px;padding:16px 20px;text-align:center}
+.wel b{font-size:19px;font-weight:900}
+.wel span{display:block;font-size:14px;opacity:.92;margin-top:2px}
+.rel{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.rel li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;background:var(--note);border:2px solid var(--note-line);border-radius:18px;padding:12px 16px}
+.rel .ar{font-weight:900;color:var(--g);font-size:15px;white-space:nowrap;padding-top:1px}
+.path{border:2px solid #111;border-radius:22px;overflow:hidden;background:#fff}
+.path header{padding:14px 18px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.path header em{font-style:normal;font-family:var(--en);font-weight:700;color:var(--olive);font-size:18px}
+.path header b{font-weight:900;font-size:20px}
+.path header span{font-size:14px;color:#333}
+.path dl{margin:0;padding:4px 18px 16px;display:grid;gap:10px}
+.path dl div{display:grid;grid-template-columns:5.8em 1fr;gap:10px}
+.path dt{font-weight:900;color:var(--g-deep);font-size:14.5px}
+.path dd{margin:0;font-size:15px;min-width:0}
+.path .go{margin:0 18px 16px}
+@media (max-width:440px){.path dl div{grid-template-columns:1fr;gap:0}}
+/* 첫 화면 */
+.splash{display:flex;flex-direction:column;min-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));background:var(--paper)}
+.splash .cover{width:min(100%, calc((100dvh - 150px) * 952 / 1233));max-width:600px}
+.start-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding-block:14px 22px;background:var(--paper)}
+.start-btn{display:flex;align-items:center;gap:14px;justify-content:space-between;width:100%;max-width:460px;text-decoration:none;background:var(--g);color:#fff;font-weight:900;font-size:clamp(19px,5.2vw,23px);line-height:1.3;padding:16px 24px;border-radius:24px;box-shadow:0 6px 0 #0e4a22}
+.start-btn span{font-size:26px}
+.start-btn:active{transform:translateY(3px);box-shadow:0 3px 0 #0e4a22}
+/* 별 도표 */
+.star-page{padding-bottom:30px;background:radial-gradient(120% 60% at 50% 40%,#eef8ea 0%,#fff 64%)}
+.star-eye{margin:22px 0 0;text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--g)}
+.star-title{margin:4px 0 0;text-align:center;font-weight:900;font-size:clamp(27px,7.4vw,38px);color:var(--g-deep);letter-spacing:-.04em;text-wrap:balance}
+.star-sub{margin:4px 0 0;text-align:center;color:var(--muted);font-size:15px}
+.star{display:block;width:100%;max-width:500px;max-height:calc(100dvh - 310px);min-height:300px;margin:4px auto 0;overflow:visible}
+.star a{cursor:pointer;outline:none}
+.star .pt{transition:transform .25s cubic-bezier(.3,1.4,.5,1);animation:pop .5s cubic-bezier(.3,1.4,.5,1) both;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes pop{from{transform:scale(.95)}to{transform:none}}
+.star .pt:hover,.star .pt:focus-visible{transform:translate(var(--dx,0),var(--dy,0))}
+.star .ctr-a:hover,.star .ctr-a:focus-visible{transform:scale(1.03)}
+.star .seg{stroke-linejoin:round;transition:filter .2s}
+.star .pt:hover .seg,.star .pt:focus-visible .seg{filter:saturate(1.3) brightness(.97)}
+.star text{font-family:var(--kr);text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+.star .lb{font-family:'Jua','Noto Sans KR',sans-serif;font-weight:400;font-size:22px;letter-spacing:-.01em}
+.star .ctr{font-weight:900;font-size:46px;fill:#fff;letter-spacing:-.03em}
+.star .ctr2{font-weight:700;font-size:21px;fill:#fff}
+.star .ctr3{font-size:14.5px;fill:#d7f3cf;font-weight:500}
+.star-hint{display:flex;align-items:center;justify-content:center;gap:6px;margin:6px 0 0;font-size:14px;color:#4b5563;text-align:center}
+.star-hint svg{width:16px;height:16px;fill:none;stroke:var(--navy);stroke-width:2.4;stroke-linecap:round;flex:none}
+.star-test{display:flex;align-items:center;gap:14px;max-width:500px;margin:18px auto 0;text-decoration:none;padding:14px 18px;border-radius:22px;background:linear-gradient(120deg,#5b3cc4,#7b5ce0 55%,#9d7df0);color:#fff;box-shadow:0 10px 24px -10px rgba(74,42,158,.55)}
+.star-test .ic{flex:none;width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.18);display:grid;place-items:center}
+.star-test .ic svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.star-test .tx{flex:1;min-width:0}
+.star-test b{display:block;font-weight:900;font-size:18px;letter-spacing:-.02em}
+.star-test small{display:block;font-size:13px;opacity:.88;margin-top:2px}
+.star-test .ar{font-size:22px;font-weight:700}
+.star-test:hover{filter:brightness(1.05)}
+/* 성향 파악하기 */
+.tests{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:620px){.tests{grid-template-columns:minmax(0,1fr)}}
+.tcard{display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink);border-radius:26px;padding:22px;min-width:0;box-shadow:0 12px 28px -16px rgba(0,0,0,.35);transition:transform .2s}
+.tcard:hover{transform:translateY(-3px)}
+.tcard.t1{background:linear-gradient(150deg,#e3f5d9,#b9e3a3)}
+.tcard.t2{background:linear-gradient(150deg,#efe8ff,#cbb8ff)}
+.tcard .art{width:76px;height:76px;border-radius:22px;display:grid;place-items:center}
+.tcard.t1 .art{background:#2f8f3f}
+.tcard.t2 .art{background:#6a4bd1}
+.tcard .art svg{width:56px;height:56px}
+.tcard .tt{display:flex;flex-direction:column;gap:6px}
+.tcard small{font-size:13px;font-weight:700;color:#3d4a3f;letter-spacing:.02em}
+.tcard.t2 small{color:#4a3a84}
+.tcard b{font-weight:900;font-size:22px;letter-spacing:-.03em;line-height:1.25}
+.tcard .tt>span{font-size:15px;line-height:1.55;color:#2c3330}
+.tcard i{font-style:normal;align-self:flex-start;margin-top:6px;font-weight:800;font-size:15px;padding:9px 16px;border-radius:99px;background:#fff}
+.tcard.t1 i{color:#256c31}.tcard.t2 i{color:#4a2a9e}
+.legend{list-style:none;margin:6px 4px 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:13px;font-weight:700;color:#2b3330}
+.legend li{display:flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:50%;border:1.5px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.legend b{font-weight:500;color:var(--muted)}
+.miss{margin:6px 6px 0;font-size:12.5px;color:#7a5a00;background:#fff6dc;border-radius:10px;padding:6px 10px;text-align:center}
+.cdot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:1px;box-shadow:0 0 0 1.5px #fff,0 0 0 2.5px rgba(0,0,0,.18)}
+.pcards .where{font-size:13px;color:#4b5563;margin-top:4px}
+.pcards .where.nopos{color:#9a5b00}
+.appfoot{border-top:1px solid #e6e8e3;background:#fff;padding-block:12px calc(12px + env(safe-area-inset-bottom,0px))}
+.appfoot .inner{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:12px;color:#7a8076}
+.appfoot .sig{font-size:10px;color:#a3a89f;letter-spacing:.02em}
+/* 조직도형 도표 */
+.org{display:grid;gap:0;justify-items:center;background:linear-gradient(180deg,#f6faf4,#fff);border:1.5px solid #e2e9de;border-radius:22px;padding:22px 16px 18px}
+.org-root span{display:inline-block;background:var(--g-deep);color:#fff;font-weight:900;font-size:18px;letter-spacing:-.02em;padding:10px 26px;border-radius:99px;box-shadow:0 6px 14px -8px rgba(14,74,34,.6)}
+.org-row{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px;width:100%;margin-top:30px}
+.org-row::before{content:"";position:absolute;top:-30px;left:50%;width:2px;height:15px;background:#9fbfa6;transform:translateX(-50%)}
+.org-row::after{content:"";position:absolute;top:-15px;left:calc(100% / var(--n) / 2);right:calc(100% / var(--n) / 2);height:2px;background:#9fbfa6}
+.org-b{position:relative;background:#fff;border-radius:18px;border:1.5px solid color-mix(in srgb,var(--fg) 30%,#fff);overflow:hidden;min-width:0;display:flex;flex-direction:column}
+.org-b::before{content:"";position:absolute;top:-17px;left:50%;width:2px;height:16px;background:#9fbfa6;transform:translateX(-50%)}
+.org-h{display:flex;gap:10px;align-items:center;background:var(--bg);padding:12px 14px}
+.org-ic{flex:none;width:34px;height:34px;border-radius:11px;background:#fff;display:grid;place-items:center}
+.org-ic svg{width:20px;height:20px;fill:none;stroke:var(--fg);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.org-h b{display:block;font-weight:900;font-size:16.5px;color:#1c1d1f;letter-spacing:-.02em;line-height:1.3}
+.org-h small{display:block;font-size:12.5px;color:#5b5f57;margin-top:1px}
+.org-b ul{list-style:none;margin:0;padding:12px;display:flex;flex-wrap:wrap;gap:6px}
+.org-b li{font-size:13.5px;font-weight:700;color:var(--fg);background:var(--bg);border-radius:10px;padding:5px 10px;line-height:1.35}
+.org-b.overflow{overflow:visible}
+@media (max-width:620px){
+  .org{justify-items:stretch}
+  .org-root{justify-self:center}
+  .org-row{grid-template-columns:minmax(0,1fr);margin-top:16px;padding-left:20px}
+  .org-row::before{top:-16px;left:8px;transform:none;height:calc(100% - 30px)}
+  .org-row::after{display:none}
+  .org-b::before{top:28px;left:-12px;width:12px;height:2px;transform:none}
+}
+/* 전국 지도 */
+.kwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:720px){.kwrap{grid-template-columns:minmax(0,1fr)}}
+.kmap{position:relative;border:1.5px solid #d9dfe8;border-radius:18px;background:linear-gradient(180deg,#f3f8ff,#fff);padding:10px}
+.kmap svg{display:block;width:100%;height:auto;max-height:70vh}
+.kp{fill:#cfe9e4;stroke:#fff;stroke-width:1.2;transition:fill .15s}
+.kp:hover{fill:#b5ded6}
+.kp.gg{fill:#a9dccf}
+.kd{cursor:pointer;outline:none}
+.kd circle{fill:#5b3cc4;stroke:#fff;stroke-width:2;transition:r .15s}
+.kd .ring{fill:none;stroke:#ff7a1a;stroke-width:2.4;stroke-dasharray:3 3}
+.kd.near circle:not(.ring){fill:#ff7a1a}
+.kd:hover circle:not(.ring),.kd:focus-visible circle:not(.ring),.kd.sel circle:not(.ring){r:8}
+.kd.sel circle:not(.ring){fill:#0a47ad}
+.kpop{position:absolute;transform:translate(-50%,calc(-100% - 14px));background:#fff;border-radius:14px;box-shadow:0 10px 28px -8px rgba(0,0,0,.35);padding:12px 14px;width:min(240px,80%);display:grid;gap:4px;z-index:2}
+.kpop.below{transform:translate(-50%,14px)}
+.kpop b{font-size:14.5px;font-weight:900;padding-right:18px}
+.kpop span{font-size:12.5px;color:#4b5563}
+.kpop .kx{position:absolute;right:6px;top:4px;border:0;background:none;font-size:20px;line-height:1;color:#888;cursor:pointer;padding:2px 6px}
+.kbtn{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.kbtn a{font-size:12.5px;font-weight:800;text-decoration:none;border-radius:99px;padding:5px 11px}
+.kbtn .nv{color:#fff;background:#03c75a;display:inline-flex;align-items:center;gap:3px}
+.kbtn .nv svg{width:13px;height:13px}
+.kbtn .hp{color:var(--navy);border:1.5px solid var(--navy);background:#fff}
+.kcap{margin:6px 4px 0;font-size:13px;color:var(--muted);text-align:center}
+.kcap b{color:#ff7a1a}
+.kcredit{margin:4px 4px 0;font-size:10.5px;color:#9aa19a;text-align:right}
+.klist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;max-height:640px;overflow:auto}
+.klist li{border:1.5px solid #e2e6ee;border-radius:14px;padding:10px 12px;display:grid;gap:2px;cursor:pointer;background:#fff}
+.klist li:hover{border-color:#b9c6e6}
+.klist li.near{border-color:#ffb27a;background:#fff8f2}
+.klist li.flash{animation:flash 1.6s ease-out}
+.klist b{font-size:15px;font-weight:900}
+.klist b em{font-style:normal;font-size:12px;color:#ff7a1a;margin-left:4px}
+.klist span{font-size:13px;color:#4b5563}
+/* 취업유형 */
+.jt2{display:grid;gap:18px;background:radial-gradient(120% 80% at 50% 0%,#eef8ea,#fff 70%);border:1.5px solid #e2e9de;border-radius:24px;padding:22px 16px}
+.jt-hub{justify-self:center;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#2bab45,#0e4a22);color:#fff;border-radius:99px;padding:10px 22px 10px 10px;box-shadow:0 10px 22px -12px rgba(14,74,34,.7)}
+.jt-hubic{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center}
+.jt-hubic svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.jt-hub b{font-size:20px;font-weight:900;letter-spacing:-.03em}
+.jt-hub small{font-size:13px;opacity:.85}
+.jt-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.jt-card{grid-column:span 2;background:#fff;border-radius:20px;padding:16px;border:1.5px solid color-mix(in srgb,var(--fg) 22%,#fff);box-shadow:0 8px 20px -16px rgba(0,0,0,.35);display:flex;flex-direction:column;gap:8px;min-width:0;position:relative;overflow:hidden}
+.jt-card::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:var(--fg);opacity:.85}
+.jt-card:nth-child(4){grid-column:2/span 2}
+.jt-top{display:flex;align-items:center;justify-content:space-between}
+.jt-ic{width:42px;height:42px;border-radius:14px;background:var(--bg);display:grid;place-items:center}
+.jt-ic svg{width:24px;height:24px;fill:none;stroke:var(--fg);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.jt-top em{font-style:normal;font-family:var(--en);font-weight:700;font-size:22px;color:var(--fg);opacity:.35}
+.jt-card>b{font-size:18px;font-weight:900;letter-spacing:-.03em;color:#1c1d1f}
+.jt-card ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.jt-card li{font-size:13.5px;font-weight:700;color:var(--fg);background:var(--bg);border-radius:10px;padding:5px 10px;line-height:1.35}
+@media (max-width:700px){.jt-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.jt-card,.jt-card:nth-child(4){grid-column:auto}.jt-card:first-child{grid-column:1/-1}}
+@media (max-width:420px){.jt-grid{grid-template-columns:minmax(0,1fr)}.jt-card:first-child{grid-column:auto}}
+.org-b li:has(.orl){padding:0;background:none}
+.orl{display:inline-flex;align-items:center;gap:4px;text-decoration:none;font-size:13.5px;font-weight:700;color:var(--fg);background:var(--bg);border-radius:10px;padding:5px 10px;line-height:1.35;border:1.5px solid transparent;transition:border-color .15s,transform .15s}
+.orl:hover,.orl:focus-visible{border-color:var(--fg);transform:translateY(-1px)}
+.orl span{font-size:15px;opacity:.6}
+tr.flash td{animation:flash 1.6s ease-out}
+.cmp > div.flash,.pg.flash{animation:flash 1.6s ease-out}
+@media (prefers-reduced-motion:reduce){.star .pt{animation:none}}
+/* 용인시 지도 + 기관 목록 */
+.ymap-wrap{display:grid;gap:10px}
+.ymap{position:relative;border:1.5px solid #d9dfe8;border-radius:18px;background:#fff;padding:8px 8px 6px;user-select:none;-webkit-tap-highlight-color:transparent}
+.gmap{display:block;width:100%;height:auto;max-height:62vh;margin:0 auto}
+.gmap .shadow{fill:#d3d6d9}
+.gmap .gu-shape{fill:#34b3a6;stroke:#fff;stroke-width:1.6;stroke-linejoin:round;cursor:pointer;transition:fill .15s}
+.gmap .gu-shape.giheung{fill:#2aa89b}
+.gmap .gu-shape.cheoin{fill:#21998d}
+.gmap[data-hover="수지"] .gu-shape.suji,.gmap[data-hover="기흥"] .gu-shape.giheung,.gmap[data-hover="처인"] .gu-shape.cheoin{fill:#0b5f57}
+.gmap[data-sel="수지"] .gu-shape.suji,.gmap[data-sel="기흥"] .gu-shape.giheung,.gmap[data-sel="처인"] .gu-shape.cheoin{fill:#0a4f48}
+.gmap:not([data-sel=""]) .gu-shape{fill:#a9ddd7}
+.gmap:not([data-sel=""])[data-hover="수지"] .gu-shape.suji,.gmap:not([data-sel=""])[data-hover="기흥"] .gu-shape.giheung,.gmap:not([data-sel=""])[data-hover="처인"] .gu-shape.cheoin{fill:#0b5f57}
+.gmap .gu-lb{font-family:var(--kr);font-weight:900;font-size:12.5px;fill:#fff;text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:rgba(6,60,55,.55);stroke-width:2.4px;cursor:pointer}
+.gmap:not([data-sel=""]) .gu-lb{fill:#0a4f48;stroke:rgba(255,255,255,.8)}
+.gmap[data-sel="수지"] .gu-lb.suji,.gmap[data-sel="기흥"] .gu-lb.giheung,.gmap[data-sel="처인"] .gu-lb.cheoin{fill:#fff;stroke:rgba(0,0,0,.35)}
+.gmap .dot{stroke:#fff;stroke-width:.9;cursor:pointer;filter:drop-shadow(0 .4px .6px rgba(0,0,0,.45))}
+.gmap .dot.off{opacity:.25}
+.gmap .dot:hover{stroke:#111}
+.tap-hint{margin:2px 4px 0;font-size:13px;color:var(--muted);text-align:center}
+.pcards li.flash{animation:flash 1.6s ease-out}
+@keyframes flash{0%{background:#fff3b0}100%{background:#fff}}
+.gu-btns{margin:0}
+.gu-btns button{font-size:15px;padding:8px 16px}
+.cnt{margin:0;font-weight:700;color:var(--g-deep)}
+.plist{display:grid;gap:22px;margin-top:6px}
+.pg h4{margin:0 0 8px;font-size:16.5px;font-weight:900;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.pg h4 small{font-weight:500;font-size:13px;color:var(--muted)}
+.pcards{list-style:none;margin:0;padding:0;border:1.5px solid var(--tline);border-radius:16px;overflow:hidden;background:#fff}
+.pcards li{padding:12px 14px;border-top:1.5px solid #e2ddf7}
+.pcards li:first-child{border-top:0}
+.pc-top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.pc-top b{font-size:15.5px;line-height:1.4}
+.pcards .area{flex:none;font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:99px;background:linear-gradient(90deg,var(--th1),var(--th2));color:#222}
+.pcards p{margin:3px 0 0;font-size:14px;color:#444;line-height:1.5}
+.pc-act{display:flex;gap:8px 12px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.nv{display:inline-flex;align-items:center;gap:4px;text-decoration:none;font-size:13.5px;font-weight:700;color:#fff;background:#03c75a;border-radius:99px;padding:5px 12px 5px 9px}
+.nv svg{width:15px;height:15px}
+.hp2{display:inline-flex;align-items:center;text-decoration:none;font-size:13.5px;font-weight:700;color:var(--navy);border:1.5px solid var(--navy);border-radius:99px;padding:4px 12px;background:#fff}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+
+<header class="bar gut" id="bar"><div class="inner">
+  <a class="brand" href="#home" aria-label="용인강남학교 처음 화면"><img src="img/emblem-full.png" alt="용인강남학교 상징"><b>용인강남학교</b></a>
+  <span class="sp"></span>
+  <a class="iconbtn" href="#find" id="findBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>찾기</a>
+  <a class="iconbtn" href="#star" id="homeBtn" hidden>전체 도표</a>
+</div></header>
+
+<main id="app"></main>
+<footer class="appfoot gut" id="appfoot"><div class="inner"><span>용인강남학교 진로직업부</span></div></footer>
+
+<script src="mapdata.js"></script>
+<script src="krmap.js"></script>
+<script>
+/* ================= 내용 (해마다 이 부분만 고치면 됩니다) ================= */
+const APP_URL = 'https://claude.ai/artifact/6GSPNT9X4Gkk2bxX8PV5qg';
+
+const S = [
+{ id:'jinhak', no:1, title:'진학', sub:'졸업생 진로·진학 현황(권역내), 졸업 후 진학 유형',
+  blocks:[
+  {id:'stat', type:'stats', title:'졸업생 진로·진학 현황 (권역내)', meta:'2025년 2월 기준',
+   items:[['산업체',49,'#6a87d8','사회참여'],['각급기관 내 일자리',3,'#ff8a3d','사회참여'],['일자리 사업 및 보호작업장',27,'#b4b4b4','사회참여'],['대학',58,'#ffd200','사회참여'],['전공과',78,'#259b6b','사회참여'],['시설',31,'#9b5cc0','기타'],['가정',30,'#ff7a2e','기타']]},
+  {id:'type', type:'tree', title:'진학 유형', root:'진학 유형',
+   items:[['대학',[['4년제 대학','jinhak','univ','특별전형'],['2~3년제 전문대학','jinhak','univ','특별전형']],'','cap','학위를 받는 과정'],['전공과',[['특수학교(급) 전공과','jinhak','local']],'','book','직업·자립을 더 배우는 과정'],['평생교육',[['대학 내 평생교육원 비학위과정','jinhak','univ','비학위과정'],'지역사회 평생교육 프로그램'],'','heart','언제든 배우는 과정']]},
+  {id:'jgg', type:'places', kind:'tel', title:'용인 관내 전공과', items:[
+    ['용인강남학교 전공과','사회 자립 교육과정','기흥','031-899-2114'],
+    ['용인다움학교 전공과','','처인','031-728-1501']
+  ]},
+  {id:'univ', type:'table', title:'유형별 학교', meta:'2025년 책자 기준', wide:true, cols:['구분','학교','참고'], left:[1,2],
+   rows:[
+    ['장애인 등 대상자 특별전형','강남대학교, 강동대학교 등 118개 대학','지원자격: 「장애인복지법」 제32조에 따라 장애인 등록을 한 사람'],
+    ['학위과정 대학 (7개)','한경국립대학교(공공행정·장애상담심리학·장애인레저스포츠학 전공)<br>나사렛대학교(재활자립학부)<br>안산대학교(에이블자립학과)<br>협성대학교(에이블아트·스포츠학과)<br>대구대학교(특수창의융합학과)<br>대구사이버대학교(발달재활과 외 14개 학과)<br>용인대학교(아이캔 자립학위과정)','참고 사이트: 각 대학교 홈페이지, 경기진학정보센터, 대입정보포털 어디가'],
+    ['비학위과정 대학','대구대학교 K-PACE센터<br>호산나대학',''],
+    ['전공과','특수학교(급) 전공과 42개교(139학급)','학교별 전형 설명회']
+   ], link:['대입정보포털 어디가','https://www.adiga.kr']}
+ ]},
+
+{ id:'chwieop', no:2, title:'취업', sub:'취업유형, 학교내장애인일자리, 장애인일자리, 권리중심 중증장애인 맞춤형 공공일자리, 장애인표준사업장, 사회적기업 및 보호작업장',
+  blocks:[
+  {id:'types', type:'jobtypes', title:'취업유형', items:[
+    ['01','공공기관','bldg',0,['각급기관 내 장애인 일자리 (경기도교육청)','장애인일자리 (보건복지부)','권리중심 중증장애인 맞춤형 공공일자리 (경기도)','공공기관 인턴과정']],
+    ['02','장애인 직업재활시설','tool',1,['보호작업장','근로사업장']],
+    ['03','일반사업체','shop',2,['표준사업장 (주식회사·재단법인·사단법인)','사회적기업','협동조합·사회적협동조합']],
+    ['04','자영업 (창업)','bag',3,['가족 사업','창업']],
+    ['05','예술·체육 분야','art',4,['화가','작가','공연활동','탁구','수영','농구','배드민턴']]
+  ]},
+  {id:'school', type:'note', title:'학교내 장애인일자리 사업', items:[
+    '배경: 경기도교육청에서 중증장애학생을 대상으로 선발 평가를 거쳐 경기도교육청 소속 각급 학교, 도서관, 교육청에 고용',
+    '대상: 특수학교(급) 고3 및 전공과 졸업예정자',
+    '장애유형: 지적장애, 자폐성장애',
+    '직무유형: 행정보조(교육청, 학교), 급식보조',
+    '선발시기: 매년 9월경',
+    '선발방법: 상담·신청 → 직무적합성평가 → 현장평가 → 채용 및 사후관리',
+    '근로조건: 1일 4시간 근로'
+  ]},
+  {id:'school-n', type:'table', title:'경기도교육청 장애인 근로자 현황', meta:'2024.3.1. 기준',
+   cols:['구분','인원(명)','담당부서'],
+   rows:[['교무보조','24','노사협력과'],['급식보조','139','학교급식협력과'],['사서보조','120','도서정책과'],['특수교육보조','71','특수교육과'],['행정보조','179','특수교육과'],['<b>합계</b>','<b>533</b>','']]},
+  {id:'jobs', type:'note', title:'장애인일자리 사업', items:[
+    '배경: 보건복지부에서 장애인에게 일자리를 제공해 사회참여 확대 및 소득보장 지원',
+    '사업기간: 매년 1월 1일~12월 31일 / 매년 11월경 모집공고',
+    '모집기관: 거주 지역의 시·군·구청 및 민간위탁기관',
+    '선정방법: 서류 및 면접심사',
+    '관련문의: 시·군·구청 장애인일자리 담당자 및 민간위탁 사업수행기관',
+    '유형: 일반형 일자리, 복지일자리, 특화형 일자리'
+  ]},
+  {id:'jobs-pay', type:'table', title:'장애인일자리 근무조건', meta:'2026년 기준', wide:true, left:[4],
+   cols:['구분','근로시간','월 보수(공제 전)','신청 대상','업무내용'],
+   rows:[
+    ['일반형 전일제','주 5일 40시간<br>(12월 37.5시간)','2,156,880원<br>(12월 2,022,720원)','만 18세 이상<br>미취업 등록장애인','행정도우미, 전담지원 행정도우미, 복지서비스 지원요원'],
+    ['일반형 시간제','주 20시간<br>(12월 19시간)','1,078,440원<br>(12월은 단축 근무로 감액)','만 18세 이상<br>미취업 등록장애인','행정도우미 등, 직업재활시설 지원요원(시간제에 한함)'],
+    ['복지일자리<br>(참여형)','주 14시간 이내<br>(월 56시간)','577,920원<br>(고용·산재보험)','만 18세 이상<br>미취업 등록장애인','도서관 사서보조, 주차단속보조, 환경정리 등 참여자의 직업능력을 반영한 맞춤형 직무'],
+    ['복지일자리<br>(특수교육-연계형)','주 14시간 이내<br>(월 56시간)','577,920원<br>(고용·산재보험)','특수교육기관 재학생<br>(전공과, 고3)','학생의 직업능력을 반영한 맞춤형 직무']
+   ], note:'2026년 최저시급 10,320원 기준입니다. 12월 단축근무는 기관 예산에 따라 다를 수 있어요.'},
+  {id:'jobs-how', type:'table', title:'참여 방법', left:[0,1,2],
+   cols:['모집기관','사업기간','관련문의','기관, 연락처'],
+   rows:[['시·군·구청 및 민간수행기관이 장애인일자리사업 참여자를 공개 모집하여 선발·배치','1월 1일부터 시작하는 사업으로, 참여자 모집은 보통 그 전년도 11~12월에 이루어짐','각 시·군·구청 장애인일자리 담당자 및 민간위탁 사업수행기관 담당자','@https://url.kr/yoo8dq']]},
+  {id:'right', type:'note', title:'권리중심 중증장애인 맞춤형 공공일자리', meta:'예산 미정, 2027년 운영 여부 불확실', items:[
+    '배경: 중증장애인들이 스스로 지역사회에서 살아갈 권리를 이야기하는 것 자체가 ‘노동’이 되는 것',
+    '슬로건: ‘이것도 노동이다’',
+    '사업 주체: 지방자치단체',
+    '경기도 참여 인원: 2021년 25명, 2022년 200명, 2023년 500명, 2024년 665명(38개소)',
+    '수행기관: (사)경기장애인부모연대, 장애인자립생활센터 등',
+    '사업기간 및 급여: 2월~12월(11개월) / 최저시급(2026년 10,320원)',
+    '3대 직무: 장애인식 개선 강사 교육 직무, 권익옹호 직무, 문화예술 직무'
+  ]},
+  {id:'rehab', type:'compare', title:'장애인직업재활시설', meta:'인원·급여 기준은 2025년 책자 기준', items:[
+    ['직업적응훈련시설',['최소 인원: 훈련장애인 20명','이용자 80% 발달장애인','평균 급여: 급여 없음','평균 훈련수당: 26,000원','재활프로그램: 재활기능 기초훈련, 의사소통기능, 대인 및 사회기능, 이동기능, 시간관리기능, 개인별 재정관리, 생활학습, 운동 및 지각기능, 직업기초기능 훈련'],'https://url.kr/zo9uwg'],
+    ['보호작업장',['근로장애인 최소 인원: 10명','평균 급여: 369,000원','평균 훈련수당: 88,000원','근로인 2/3에게 최저임금 40% 이상 지급 노력, 1인당 최저 30% 이상 유지 노력','재활프로그램: 직업적응훈련, 문제해결훈련, 직업평가, 직무기능 향상훈련, 지역사회 자원활용훈련 등 주 8시간 이상','작업활동 프로그램'],'https://url.kr/98bhvp'],
+    ['근로사업장',['근로장애인 최소 인원: 30명','평균 급여: 100만 원 정도','평균 훈련수당: 117,000원','근로장애인 2/3에게 최저임금 이상 지급 노력, 1인당 최저 80% 이상 유지 노력','재활프로그램: 사회적응훈련, 직무 기능훈련, 작업태도 및 기술훈련, 경쟁고용으로 옮겨 가기 위한 조치 등','통근 지원'],'https://url.kr/ms4p7f']
+  ]},
+  {id:'std', type:'table', title:'표준사업장 및 사회적기업 (경기도)', meta:'2025년 6월 말 기준', left:[1],
+   cols:['형태','내용','시설명, 연락처'],
+   rows:[
+    ['<b>표준사업장</b><br>(159개소)','경쟁노동시장에서 직업 활동이 어려운 중증장애인의 안정된 일자리와 사회통합 기반을 만들기 위해, 장애인 중심의 작업환경 기준을 갖추고 「장애인고용촉진 및 직업재활법 시행규칙」 제3조에 따라 한국장애인고용공단의 인증을 받은 사업장','@https://url.kr/vrpvm7'],
+    ['<b>사회적기업</b><br>(716개소)','영리기업과 비영리기업의 중간 형태로, 취약계층에게 사회서비스나 일자리를 제공해 지역주민의 삶의 질을 높이는 사회적 목적을 추구하면서 재화와 서비스를 생산·판매하는 기업으로 고용노동부 장관의 인증을 받은 기관','@https://url.kr/yll8xi']
+   ]},
+  {id:'sub', type:'table', title:'장애인표준사업장 (주요기업 자회사형)', meta:'전국',
+   cols:['모회사','자회사'],
+   rows:[['삼성SDS㈜','오픈핸즈㈜'],['LG디스플레이㈜','㈜나눔누리'],['LG이노텍㈜','이노위드㈜'],['㈜LG유플러스','㈜위드유'],['㈜LG화학','㈜행복누리'],['LG전자㈜','㈜하누리'],['SK하이닉스','행복모아'],['LG생활건강㈜','㈜밝은누리'],['캐논코리아비즈니스솔루션㈜','㈜엔젤위드']]},
+  {id:'yongin-std', type:'places', kind:'job', title:'용인 관내 장애인표준사업장', items:[
+    ['(주)풀무원 투게더 (풀무원푸드앤컬처)','포장, 아이스팩 제조','처인','','2023.7.5.'],
+    ['벗이 미술관 (용인정신병원)','미화, 화가 (예술 분야)','처인'],
+    ['(주)우리도','서비스업, 도매 및 소매업 (경영 컨설팅업, 상품 종합 도매업)','기흥'],
+    ['(주)위드앰','서비스업 (위생관리, 용역, 소독 방역)','수지'],
+    ['(주)그리니쉬 농업회사법인','농업 (화훼)','처인'],
+    ['(주)에이스엘이디','제조업 (전광판, CCTV, 전기공사, 태양광, LED조명)','처인'],
+    ['유플러스(주) 스탭스','명함, 카탈로그, 브로슈어, 전단지, 교재, 디자인','기흥','','2010'],
+    ['(주)희망별숲 (삼성전자)','제과, 팝업북','기흥','','2023.3.30.'],
+    ['벗이 (용인정신병원)','바리스타, 미화, 매점','기흥','','정신장애, 지적장애'],
+    ['올모(OLMO)','그림','기흥','','2025'],
+    ['(주)톡톡이네','서비스업 (카페, 사무지원 등)','처인'],
+    ['(주)벗이','서비스 (도소매)','처인'],
+    ['사회적협동조합 푸른하늘','제조업 (LED조명, 전기배전, CCTV, 비철처리 등)','처인']
+  ]},
+  {id:'yongin-social', type:'places', kind:'job', title:'사회적 기업 및 보호작업장', items:[
+    ['사회적협동조합 용인도우누리','노인장기요양서비스, 노인돌보미, 병원간병, 사회서비스바우처사업, 요양보호사교육, 장애인활동보조사업','기흥'],
+    ['(주)한고연','식물재배, 조경·정원시설물 제작, 조경수, 조경계획 설계 컨설팅, 조경수 관리 및 유지, 농원 만들기 교육 등','처인'],
+    ['(주)에이스엘이디','LED 부품 제조(조립), 태양광설비 A/S 및 청소용역','처인'],
+    ['해바라기의료복지사회적협동조합','특수아동센터, 장애아 이동서비스, 녹색가게, 작은도서관, 푸른꿈쉼터, 장애아가정 가사지원','기흥'],
+    ['(사)한국지체장애인협회 용인시보호작업장','쿠키 제작, 쓰레기종량제 봉투 제작','처인'],
+    ['예송장애인가족협회','장애아동 재활치료, 심리검사, 가족상담','처인','031-8005-6382'],
+    ['기흥직업지원센터','포장 패키지, 인쇄, 쇼핑백','기흥'],
+    ['성만원','조명기구','처인'],
+    ['양지바른보호작업장','원두커피, 체험장 운영','처인'],
+    ['용인시보호작업장','종량제봉투, 제과제빵','처인'],
+    ['지구촌보호작업장','제과제빵','수지'],
+    ['해든솔직업지원센터','쇼핑백','처인'],
+    ['메이크위드보호작업장','농산물 세척, 포장','처인'],
+    ['현대캐터링 녹십자 사내식당','식기세척 보조','기흥']
+  ]}
+ ]},
+
+{ id:'hullyeon', no:3, title:'교육 및 훈련기관', sub:'지역사회 생활 유형, 지역사회 교육 및 훈련기관(발달장애인훈련센터, 한국장애인개발원, 장애인복지관, 일산직업능력개발원), 창업진흥원',
+  blocks:[
+  {id:'unemp', type:'tree', title:'지역사회 생활 유형', meta:'항목을 누르면 지도·목록으로 가요', root:'지역사회 생활 유형', items:[
+    ['거주시설',[['단기거주시설','siseol','gg-res','단기거주시설'],['공동생활가정(그룹홈)','siseol','gg-res','공동생활가정']],'','home','생활하며 지내는 곳'],
+    ['지역사회 재활시설',[['장애인복지관','siseol','local','복지관'],'맞춤형센터',['발달장애인훈련센터','hullyeon','dtc-map'],['직업적응훈련시설','chwieop','rehab','직업적응훈련시설'],['주간활동시설','bokji','local','주간활동'],['주간보호시설','siseol','local','주간']],'','book','낮 동안 다니며 배우는 곳'],
+    ['가정',[['가정에서 생활하며 복지서비스 이용','bokji','local']],'','heart','집에서 지내는 경우']
+  ]},
+  {id:'dtc', type:'note', title:'지역사회 교육 및 훈련기관', org:'[기관명: 발달장애인훈련센터 - 고용노동부 산하기관]', items:[
+    '목적: 직업체험으로 직업적 흥미와 적성을 찾고, 개인별 특성에 맞춘 직업훈련으로 취업을 지원',
+    '직업훈련(장애유형별 특화 훈련, 지적·자폐성): 제조기술, 스마트사무행정, 서비스산업 / 15세 이상 발달장애인 구직자(고3·전공과 졸업 예정자, 취업성공패키지 1단계 이수자도 가능) / 1~6개월',
+    '직업훈련준비과정: 고용연계 훈련이 어려운 15세 이상 발달장애인 / 20시간 이상~3개월',
+    '직업체험 – 기초체험: 특수교육대상 학생(고1~고3, 전공과) / 4시간 이상(교육청 연계)',
+    '직업체험 – 일배움과정: 교육청이 추천한 15세 이상 특수교육대상자, 관련 기관 추천 또는 개별 신청한 발달장애인 / 6시간 이상',
+    '그 밖에: 교사교육, 사업주교육, 전문가 네트워크',
+    '훈련 특전: 훈련비 전액 국가 지원, 훈련참여수당(취업성공패키지 참여 시 월 최대 284,000원)·교통비·식비(요건 충족 시), 수료 후 취업알선·사후지도, 상해보험 가입',
+    '문의: 전국대표번호 @1588-1519'
+  ], star:'*전국 19개소 — 아래 지도에서 가까운 센터를 찾아보세요'},
+  {id:'dtc-map', type:'kmap', title:'전국 발달장애인훈련센터', meta:'19곳 · 한국장애인고용공단'},
+  {id:'kodda', type:'note', org:'[기관명: 한국장애인개발원 - 보건복지부 산하기관]', items:[
+    '목적: 장애인 관련 조사·연구 및 정책개발·복지진흥',
+    '사업: 직업재활지원사업, 장애인일자리 사업, 장애아동·발달장애인 지원, 중증장애인생산품 우선구매, 인식개선, 직무매뉴얼'
+  ], link:['한국장애인개발원','https://www.koddi.or.kr']},
+  {id:'welfare', type:'note', org:'[기관명: 장애인복지관 - 보건복지부 산하기관]', items:[
+    '지역사회 직업적응훈련 프로그램, 평생교육 프로그램 운영, 각종 직업훈련 위탁교육, 직업상담 및 평가 등'
+  ]},
+  {id:'ilsan', type:'note', org:'[기관명: 일산직업능력개발원 - 한국장애인고용공단 산하기관]', items:[
+    '국내 최초 장애인 전용 공공 직업능력개발 훈련기관',
+    '입학자격: 만 15세 이상의 구직등록 장애인',
+    '접수기간: 연중 수시 (월 1회 이상 선발평가 실시)',
+    '양성훈련과정: 컴퓨터응용기계, 전자, IT융합, 정보기술, 디자인, 인쇄출판미디어 분야',
+    '특성화 훈련과정: 지적장애(제조업·서비스 분야), 시각장애(정보접근성 컨설팅 직종), 여성(네일아트), 청각장애(컴퓨터응용기계, 전자)'
+  ]},
+  {id:'kised', type:'note', org:'[기관명: 창업진흥원 - 중소벤처기업부 산하기관]', items:[
+    '목적: 창업기업 성장 및 일자리 창출을 통한 국가발전에 기여',
+    '지원사업: 예비창업, 초기창업(창업 3년 이내), 창업도약(창업 3~7년차)',
+    '지원내용: 창업교육, 멘토링, 사업화자금, 시설공간, 네트워크 등'
+  ]}
+ ]},
+
+{ id:'siseol', no:4, title:'지역사회 유관 시설', sub:'주간이용센터, 장애인거주시설, 장애인재활시설, 기타 시설',
+  blocks:[
+  {id:'day', type:'places', kind:'tel', title:'주간이용센터', items:[
+    ['용인시처인장애인복지관','','처인','031-320-4810'],
+    ['용인시기흥장애인복지관','','기흥','031-895-3210'],
+    ['용인시수지장애인복지관','','수지','031-270-0280'],
+    ['용인시장애인주간이용센터 라온','','처인','031-322-0297'],
+    ['다솜의집','','처인','031-321-4170'],
+    ['더사랑주간보호센터','','기흥','031-284-7610'],
+    ['향상행복한센터','','기흥','031-8009-0823'],
+    ['마실장애인지원센터','','기흥','031-216-9993'],
+    ['두나미스','','수지','031-265-9442']
+  ]},
+  {id:'res', type:'table', title:'거주 시설', left:[1], cols:['기관명','역할'], rows:[
+    ['<b>장애유형별 거주시설</b>','장애유형에 적합한 주거지원·일상생활지원·지역사회생활지원 등의 서비스를 제공'],
+    ['<b>중증장애인 거주시설</b>','장애의 정도가 심하여 항상 도움이 필요한 장애인에게 주거지원·일상생활지원·지역사회생활지원·요양서비스를 제공'],
+    ['<b>장애영유아 거주시설</b>','6세 미만의 장애영유아를 보호하고 재활에 필요한 주거지원·일상생활지원·지역사회생활지원·요양서비스를 제공'],
+    ['<b>장애인 단기거주시설</b>','보호자의 일시적 부재 등으로 도움이 필요한 장애인에게 단기간 주거서비스, 일상생활지원서비스, 지역사회생활서비스를 제공'],
+    ['<b>장애인 공동생활가정(그룹홈)</b>','장애인들이 스스로 사회에 적응하기 위하여 전문인력의 지도를 받으며 공동으로 생활하는 지역사회 내의 소규모 주거시설']
+  ]},
+  {id:'etc', type:'table', title:'기타 시설', left:[1], cols:['기관명','역할'], rows:[
+    ['<b>장애인 주간보호시설</b>','주간에 일시 보호, 필요한 재활서비스를 제공'],
+    ['<b>장애인 재활치료시설</b>','언어·미술·음악 등 재활치료에 필요한 치료, 상담, 훈련 등의 서비스 제공'],
+    ['<b>장애인 생활이동지원센터</b>','이동에 상당한 제약이 있는 장애인에게 차량 운행을 통한 직장 출퇴근 및 외출 보조나 그 밖의 이동서비스 제공'],
+    ['<b>장애인 체육시설</b>','장애인의 체력증진·신체기능 회복활동을 지원, 편의 제공'],
+    ['<b>장애인 의료재활시설</b>','입원·통원을 통하여 상담, 진단·판정, 치료 등 의료재활서비스 제공'],
+    ['<b>장애인 수련시설</b>','장애인의 문화·취미·오락활동 등을 통한 심신수련 조장·지원 편의 제공']
+  ]},
+  {id:'rh', type:'table', title:'재활 시설', left:[1], cols:['기관명','역할'], rows:[
+    ['<b>한국수어 통역센터</b>','청각·언어장애인에게 한국수어 통역 및 상담서비스 제공'],
+    ['<b>점자도서관</b>','시각장애인에게 점자간행물 및 녹음서를 열람하게 하는 시설'],
+    ['<b>점자도서 및 녹음서 출판시설</b>','시각장애인을 위한 점자간행물 및 녹음서를 출판하는 시설'],
+    ['<b>장애인가족지원센터</b>','장애인과 가족의 역량강화를 통한 장애인 가족의 삶의 질 향상과 사회적 인식개선'],
+    ['<b>장애인인권센터</b><br>(장애인권익옹호기관, 장애인권리증진센터)','법이 보장하는 장애인의 권리와 장애인이 인간으로서 누려야 할 기본권리를 침해당했을 때 인권상담을 받고 구제를 위한 도움을 받을 수 있는 곳'],
+    ['<b>장애인학부모회</b>','장애 자녀의 권리를 위해 부모상담 등 각종 사업 진행']
+  ]},
+  {id:'gg-res', type:'table', title:'장애인 거주시설 (경기도)', meta:'2025년 6월 말 기준', cols:['시설','시설명, 연락처'], rows:[
+    ['<b>지체장애인 거주시설</b><br>(5개소)','@https://url.kr/sqdcci'],
+    ['<b>시각장애인 거주시설</b><br>(4개소)','@https://url.kr/sjdtg6'],
+    ['<b>청각·언어장애인 거주시설</b><br>(2개소)','@https://url.kr/1eyjpu'],
+    ['<b>지적장애인 거주시설</b><br>(76개소)','@https://url.kr/7z5qit'],
+    ['<b>중증장애인 거주시설</b><br>(52개소)','@https://url.kr/1sn9oa'],
+    ['<b>장애인 단기거주시설</b><br>(29개소)','@https://url.kr/k883ku'],
+    ['<b>장애인 공동생활가정(그룹홈)</b><br>(148개소)','@https://url.kr/5qtef8']
+  ]},
+  {id:'gg-reh', type:'table', title:'지역사회 재활시설 (경기도)', meta:'2025년 6월 말 기준', cols:['시설','시설명, 연락처'], rows:[
+    ['<b>장애인복지관</b><br>(39개소)','@https://url.kr/q1lpkz'],
+    ['<b>장애인 주간보호시설</b><br>(159개소)','@https://url.kr/tym2um'],
+    ['<b>장애인 생활이동지원센터</b><br>(31개소)','@https://url.kr/hzo8a6'],
+    ['<b>장애인 체육시설</b><br>(5개소)','@https://url.kr/r22ye2'],
+    ['<b>점자도서관</b><br>(5개소)','@https://url.kr/jg5u68'],
+    ['<b>수어통역센터</b><br>(32개소)','@https://url.kr/afnxap']
+  ]}
+ ]},
+
+{ id:'bokji', no:5, title:'복지 서비스', sub:'발달장애인 긴급돌봄서비스, 발달장애인 방과후활동서비스, 발달장애인 주간활동서비스',
+  blocks:[
+  {id:'emg', type:'note', title:'발달장애인 긴급돌봄 서비스', groups:[
+    ['목적',['보호자가 발달장애인을 돌볼 수 없을 때 발달장애인이 긴급돌봄센터에서 안전하게 지낼 수 있도록 돕기 위함']],
+    ['이용 기간',['최대 7일(1년에 총 30일) 동안 이용할 수 있으며 24시간 돌봄 지원','서비스를 신청하는 이유에 따라 이용 기간이 달라짐']],
+    ['센터가 있는 곳',['긴급돌봄센터는 아파트, 빌라 등에 총 2곳이 있음','이용자는 성별에 따라 여성센터, 남성센터에서 지내며, 각 센터는 최대 4명까지 이용 가능']],
+    ['센터에서 하는 활동',['이용자가 평소처럼 지낼 수 있도록 돕고, 학교에 가거나 복지관을 이용하기도 하고, 센터에서 여러 활동을 하면서 의미 있는 시간을 보낼 수 있음']],
+    ['서비스를 신청할 수 있는 상황',['보호자가 병원에 입원해야 하는 상황','보호자가 결혼식이나 장례식에 가야 하는 상황','보호자가 몸과 마음이 지치고 힘들어서 발달장애인을 돌보지 못하는 상황','보호자가 갑작스러운 사고나 재난을 당해서 발달장애인을 돌보지 못하는 상황']],
+    ['서비스를 이용할 수 있는 사람',['6살부터 64세까지 발달장애인이라면 누구나 이용 가능']],
+    ['이용 제한이 있는 사람',['장애인거주시설에서 생활하는 사람','전문적인 의료지원이 필요한 사람(주사, 석션, 투석 등)','감염병 질환이 있는 사람','가족이나 친척이 없는 사람']],
+    ['서비스 신청 방법 및 이용 비용 등 자세한 문의',['경기발달장애인지원센터 @031-895-6163','경기발달장애인긴급돌봄센터: 지원센터로 먼저 문의하세요 (책자에 적힌 번호가 다른 기관 번호로 확인되어 뺐어요)']]
+  ]},
+  {id:'after', type:'places', kind:'tel', title:'발달장애인 방과후활동서비스', items:[
+    ['예지원가족발달연구소','','처인','031-322-8485'],
+    ['사단법인 반딧불이','','처인','070-4742-3775'],
+    ['(사)용인 CYA부설 마음드림심리상담센터','','기흥','031-282-4231'],
+    ['숲속아동발달센터','','처인','031-322-6870'],
+    ['짐사회서비스센터','','수지','031-896-3119'],
+    ['사단법인 하울회 용인지부','','수지','031-272-8569'],
+    ['해누리센터','','수지','031-897-8885'],
+    ['아이비전','','수지','070-4233-4001'],
+    ['WE:MILY 특수지원센터 동백점','','기흥','010-7543-8776'],
+    ['주스아이아동발달연구소','','기흥','010-3630-9531'],
+    ['라온아동발달센터','','기흥','031-216-4474 · 010-8272-4474']
+  ]},
+  {id:'daytime', type:'places', kind:'tel', title:'발달장애인 주간활동서비스', items:[
+    ['예지원가족발달연구소','','처인','031-322-8485'],
+    ['사단법인 반딧불이','','처인','070-4742-3775'],
+    ['(사)용인 CYA부설 마음드림심리상담센터','','기흥','031-282-4231'],
+    ['사회적협동조합 용인도우누리','','기흥','031-8019-8089'],
+    ['짐사회서비스센터','','수지','031-896-3119'],
+    ['사단법인 하울회 용인지부','','수지','031-272-8569'],
+    ['해누리센터','','수지','031-897-8885'],
+    ['아이비전','','수지','070-4233-4001'],
+    ['WE:MILY 특수지원센터 동백점','','기흥','010-7543-8776'],
+    ['기흥장애인복지관','','기흥','031-895-3250'],
+    ['주스아이아동발달연구소','','기흥','010-3630-9531'],
+    ['틔움통합발달센터','','기흥','031-281-3837']
+  ]}
+ ]}
+];
+
+/* ================= 그리기 ================= */
+const $ = s => document.querySelector(s);
+const app = $('#app');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const strip = s => String(s).replace(/<[^>]+>/g,' ');
+const GU = {'처인':'처인구','기흥':'기흥구','수지':'수지구'};
+
+function qrSVG(url, size=92){
+  const q = (window.QR||{})[url]; if(!q) return '';
+  const [n,d] = q;
+  return `<svg class="qr" width="${size}" height="${size}" viewBox="-1 -1 ${n+2} ${n+2}" role="img" aria-label="QR코드"><rect x="-1" y="-1" width="${n+2}" height="${n+2}" fill="#fff"/><path d="${d}" fill="#111"/></svg>`;
+}
+function linkCell(url, label='바로가기'){
+  return `<div class="qrcell"><a class="go" href="${url}" target="_blank" rel="noopener">${label} ↗</a></div>`;
+}
+function telHTML(t){
+  return t.split(' · ').map(n=>`<span class="tel"><a href="tel:${n.replace(/-/g,'')}">${n}</a><button class="cp" type="button" data-copy="${n}">복사</button></span>`).join('<br>');
+}
+function cell(c){
+  if(typeof c==='string' && c.startsWith('@')) return linkCell(c.slice(1));
+  return c;
+}
+
+const WAVE_TL = `<svg class="wave-tl" viewBox="0 0 300 190" aria-hidden="true"><path d="M0 0H272C284 58 246 96 150 112C82 124 32 130 0 142Z" fill="#47a552"/><path d="M0 184C60 160 140 150 212 130C262 115 292 70 286 0" fill="none" stroke="#8dc63f" stroke-width="5"/></svg>`;
+const WAVE_BR = `<svg class="wave-br" viewBox="0 0 300 160" aria-hidden="true"><path d="M300 30C250 30 220 50 190 100C170 135 150 152 110 160H300Z" fill="#1f9e3b"/><path d="M0 158C70 150 120 135 150 100C185 58 220 14 300 8" fill="none" stroke="#8dc63f" stroke-width="5"/></svg>`;
+
+function blockHead(b){
+  if(!b.title || b.type==='jobtypes') return '';
+  return `<div class="blk-h"><h3>${b.title}</h3>${b.meta?`<span class="meta">${b.meta}</span>`:''}</div>`;
+}
+function renderBlock(b){
+  let h='';
+  if(b.type==='stats'){
+    const tot=b.items.reduce((a,x)=>a+x[1],0), soc=b.items.filter(x=>x[3]==='사회참여').reduce((a,x)=>a+x[1],0);
+    const sc=b.items.filter(x=>x[3]==='사회참여').length;
+    h=`<div class="tbl wide"><table><thead><tr><th colspan="${sc}">사회참여</th><th colspan="${b.items.length-sc}">기타</th></tr>
+      <tr>${b.items.map(x=>`<th>${x[0]}</th>`).join('')}</tr></thead><tbody><tr>${b.items.map(x=>`<td>${x[1]}</td>`).join('')}</tr>
+      <tr><td colspan="${b.items.length}">사회참여율(취업+진학) : <b>${Math.round(soc/tot*100)}%</b> (전체 ${tot}명 중 ${soc}명)</td></tr></tbody></table></div>`;
+    let a0=-Math.PI/2, paths='';
+    b.items.forEach(x=>{const a1=a0+x[1]/tot*Math.PI*2, r=90, cx=100, cy=100;
+      const p=(a)=>`${(cx+r*Math.cos(a)).toFixed(2)} ${(cy+r*Math.sin(a)).toFixed(2)}`;
+      paths+=`<path d="M${cx} ${cy}L${p(a0)}A${r} ${r} 0 ${a1-a0>Math.PI?1:0} 1 ${p(a1)}Z" fill="${x[2]}" stroke="#fff" stroke-width="2.5"/>`;
+      const m=(a0+a1)/2, lr=x[1]/tot>.08?58:104; const lx=cx+lr*Math.cos(m), ly=cy+lr*Math.sin(m);
+      paths+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="#111" font-family="sans-serif">${x[1]}</text>`;
+      a0=a1;});
+    h+=`<div class="pie"><h4>졸업생 진로 현황 유형(명)</h4><svg viewBox="-20 -20 240 240" role="img" aria-label="졸업생 진로 현황 원그래프">${paths}</svg>
+      <ul>${b.items.map(x=>`<li><i style="background:${x[2]}"></i>${x[3]} ${x[0]}<b>${x[1]}</b></li>`).join('')}</ul></div>`;
+  }
+  if(b.type==='tree'){
+    const PAL=[['#e7f6ee','#2f9e5b'],['#eef0ff','#5b5bd6'],['#fff2e3','#d9822b']];
+    h=`<div class="org"><div class="org-root"><span>${b.root}</span></div><div class="org-row" style="--n:${b.items.length}">${b.items.map(([m,ls,_c,ic,sub],i)=>{const [bg,fg]=PAL[i%3];
+      return `<div class="org-b" style="--bg:${bg};--fg:${fg}"><div class="org-h"><span class="org-ic"><svg viewBox="0 0 24 24">${ICON[ic]||ICON.home}</svg></span><span><b>${m}</b>${sub?`<small>${sub}</small>`:''}</span></div><ul>${ls.map(l=>Array.isArray(l)?`<li><a class="orl" href="#${l[1]}" data-jump="${l[2]}"${l[3]?` data-hl="${l[3]}"`:''}>${l[0]} <span aria-hidden="true">›</span></a></li>`:`<li>${l}</li>`).join('')}</ul></div>`;}).join('')}</div></div>`;
+  }
+  if(b.type==='kmap'){ h=kmapHTML(); }
+  if(b.type==='table'){
+    h=`<div class="tbl ${b.wide?'wide':''}"><table><thead><tr>${b.cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${
+      b.rows.map(r=>`<tr>${r.map((c,i)=>`<td${b.left&&b.left.includes(i)?' class="l"':''}>${cell(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+      ${b.note?`<p class="tnote">${b.note}</p>`:''}${b.link?`<a class="go" href="${b.link[1]}" target="_blank" rel="noopener">${b.link[0]} ↗</a>`:''}`;
+  }
+  if(b.type==='note'){
+    const li = t => `<li>${t.replace(/@([\d-]+)/g,(_,n)=>telHTML(n))}</li>`;
+    h=`<div class="note">${b.org?`<p class="org">${b.org}</p>`:''}${
+      b.groups ? `<ul>${b.groups.map(([g,its])=>`<li><b>${g}</b><ul style="list-style:'- ';padding-left:.9em;margin:3px 0 10px">${its.map(li).join('')}</ul></li>`).join('')}</ul>`
+               : `<ul>${b.items.map(li).join('')}</ul>`}
+      ${b.star?`<p class="star">${b.star}</p>`:''}${b.link?`<a class="go" href="${b.link[1]}" target="_blank" rel="noopener">${b.link[0]} ↗</a>`:''}</div>`;
+  }
+  if(b.type==='jobtypes'){
+    const P=[['#fff1e2','#c96a12'],['#e2f8f3','#14806f'],['#eceeff','#4c4fd0'],['#fdeaf2','#c23f78'],['#edf7dc','#4f8a12']];
+    h=`<div class="jt2"><div class="jt-hub"><span class="jt-hubic"><svg viewBox="0 0 24 24">${ICON.bag}</svg></span><b>취업유형</b><small>5가지 길</small></div>
+      <div class="jt-grid">${b.items.map(([n,t,ic,pi,chips])=>{const [bg,fg]=P[pi];
+        return `<div class="jt-card" style="--bg:${bg};--fg:${fg}"><div class="jt-top"><span class="jt-ic"><svg viewBox="0 0 24 24">${ICON[ic]}</svg></span><em>${n}</em></div><b>${t}</b><ul>${chips.map(c=>`<li>${c}</li>`).join('')}</ul></div>`;}).join('')}</div></div>`;
+  }
+  if(b.type==='compare'){
+    h=`<div class="cmp">${b.items.map(([t,its,u])=>`<div><h4>${t}</h4><ul>${its.map(x=>`<li>${x}</li>`).join('')}</ul><div class="ft">${linkCell(u,'시설 목록')}</div></div>`).join('')}</div>`;
+  }
+  if(b.type==='places'){ h = placesTable(b, b.items, true); }
+  return `<section class="blk" id="${b.id}">${blockHead(b)}${h}</section>`;
+}
+function placeRow(b, x){
+  const [n,d,a,t,e]=x;
+  if(b.kind==='tel') return `<tr data-a="${a}"><td><b>${n}</b></td><td>${telHTML(t)}</td><td>${GU[a]}</td></tr>`;
+  return `<tr data-a="${a}"><td><b>${n}</b></td><td class="l">${d}</td><td>${GU[a]}${e?`<br><small>(${e})</small>`:''}</td></tr>`;
+}
+function placesTable(b, items, withFilter){
+  const cols = b.kind==='tel' ? ['시설명','전화번호','소재지'] : ['업체명','직무활동','소재지'];
+  const areas=['처인','기흥','수지'].filter(a=>items.some(x=>x[2]===a));
+  const f = withFilter && areas.length>1 ? `<div class="flt" data-for="${b.id}"><button type="button" aria-pressed="true" data-a="">전체 ${items.length}</button>${areas.map(a=>`<button type="button" aria-pressed="false" data-a="${a}">${GU[a]} ${items.filter(x=>x[2]===a).length}</button>`).join('')}</div>` : '';
+  return `${f}<div class="tbl"><table id="t-${b.id}"><thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${items.map(x=>placeRow(b,x)).join('')}</tbody></table></div>`;
+}
+
+/* ---------- 별 도표 (가운데 복지) ---------- */
+const ICON={
+  cap:'<path d="M2 9.5 12 5l10 4.5-10 4.5z"/><path d="M6.5 11.6V16c3.2 2.2 7.8 2.2 11 0v-4.4"/><path d="M22 9.5v5"/>',
+  bag:'<rect x="3" y="7.5" width="18" height="12.5" rx="2.5"/><path d="M9 7.5V5.8A1.8 1.8 0 0 1 10.8 4h2.4A1.8 1.8 0 0 1 15 5.8v1.7"/><path d="M3 12.5h18"/>',
+  book:'<path d="M3 6.2c3-1.2 6-1 9 1 3-2 6-2.2 9-1V19c-3-1.2-6-1-9 1-3-2-6-2.2-9-1z"/><path d="M12 7.2V20"/>',
+  home:'<path d="M3.5 11 12 4.5l8.5 6.5"/><path d="M5.5 9.6V20h13V9.6"/><path d="M10 20v-5h4v5"/>',
+  find:'<circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/>',
+  bldg:'<path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01"/>',
+  tool:'<path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L4 17l3 3 5.2-5.2a4 4 0 0 0 5.3-5.3l-2.6 2.6-2.4-.6-.6-2.4z"/>',
+  shop:'<path d="M4 10h16l-1.2-5H5.2z"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
+  art:'<path d="M12 3a9 9 0 0 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-1-.8-1.4-.8-2.3 0-.9.7-1.6 1.6-1.6H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/>',
+  heart:'<path d="M12 20s-7.5-4.6-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/>'
+};
+function star(){
+  const r=142, g=15, round=9;
+  const rad=d=>d*Math.PI/180, P=(R,d)=>[R*Math.cos(rad(d)), R*Math.sin(rad(d))];
+  const f=n=>n.toFixed(1);
+  const inner=[0,1,2,3,4].map(k=>P(r,-90+72*k));
+  const a=r*Math.cos(rad(36)), half=r*Math.sin(rad(36)), h=half*Math.tan(rad(62));
+  const pts=[
+    {k:4, href:'#hullyeon', l:['교육 및','훈련기관'], icon:'book', c:['#eef8df','#c4e69a'], ink:'#356312'},
+    {k:0, href:'#chwieop', l:['취업'], icon:'bag', c:['#fff3e1','#ffcf8f'], ink:'#8a4600'},
+    {k:1, href:'#jinhak', l:['진학'], icon:'cap', c:['#f3eeff','#cbb8ff'], ink:'#4a2a9e'},
+    {k:2, href:'#find', l:['검색'], icon:'find', c:['#eaf2ff','#a9c6ff'], ink:'#0a47ad'},
+    {k:3, href:'#siseol', l:['지역사회','유관시설'], icon:'home', c:['#e2fbf6','#93e0d3'], ink:'#0b6457'}
+  ];
+  let defs='', g1='';
+  pts.forEach((p,i)=>{
+    const nd=-54+72*p.k, [nx,ny]=P(1,nd);
+    const v1=inner[p.k], v2=inner[(p.k+1)%5];
+    const tx=(v2[0]-v1[0])/(2*half), ty=(v2[1]-v1[1])/(2*half), inset=round*0.9;
+    const b1=[v1[0]+nx*g+tx*inset, v1[1]+ny*g+ty*inset], b2=[v2[0]+nx*g-tx*inset, v2[1]+ny*g-ty*inset];
+    const ap=P(a+g+h-round*1.6, nd), bm=P(a+g, nd);
+    defs+=`<linearGradient id="pg${i}" gradientUnits="userSpaceOnUse" x1="${f(bm[0])}" y1="${f(bm[1])}" x2="${f(ap[0])}" y2="${f(ap[1])}"><stop offset="0" stop-color="${p.c[0]}"/><stop offset="1" stop-color="${p.c[1]}"/></linearGradient>`;
+    const [cx,cy]=P(a+g+h*(p.k===2?0.38:0.34), nd), lh=23, bh=36+6+p.l.length*lh, top=cy-bh/2;
+    const ix=cx, iy=top+18, lx=cx, ly=top+36+6+lh/2;
+    let t=`<g class="badge" transform="translate(${f(ix)} ${f(iy)})"><circle r="18" fill="#fff"/><g transform="translate(-11.4 -11.4) scale(.95)" fill="none" stroke="${p.ink}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICON[p.icon]}</g></g>`;
+    let y=ly;
+    p.l.forEach(l=>{t+=`<text class="lb" x="${f(lx)}" y="${f(y)}" fill="${p.ink}">${l}</text>`; y+=lh;});
+    const d=`M${f(b1[0])} ${f(b1[1])}L${f(ap[0])} ${f(ap[1])}L${f(b2[0])} ${f(b2[1])}Z`;
+    g1+=`<a class="pt" href="${p.href}" style="--dx:${f(nx*5)}px;--dy:${f(ny*5)}px;--i:${i+1}" aria-label="${p.href==='#find'?'검색 — 기관 이름이나 하고 싶은 일로 검색해 보세요':p.l.join(' ')}"><path class="seg" d="${d}" fill="url(#pg${i})" stroke="url(#pg${i})" stroke-width="${round*2}"/>${t}</a>`;
+  });
+  const pent='M'+inner.map(v=>v.map(n=>f(n*0.92)).join(' ')).join('L')+'Z';
+  g1+=`<a class="pt ctr-a" href="#bokji" aria-label="복지 서비스"><path class="seg" d="${pent}" fill="url(#gc)" stroke="url(#gc)" stroke-width="18"/>
+    <path d="${pent}" fill="url(#gl)" transform="scale(.82)" opacity=".6" pointer-events="none"/>
+    <g transform="translate(-11 -66)" fill="#fff"><path d="M11 19.5s-7-4.3-7-9.5A3.8 3.8 0 0 1 11 7.8 3.8 3.8 0 0 1 18 10c0 5.2-7 9.5-7 9.5z"/></g>
+    <text class="ctr" x="0" y="-8">복지</text>
+    <text class="ctr2" x="0" y="23">서비스</text>
+    <text class="ctr3" x="0" y="49">어느 길이든 함께</text></a>`;
+  return `<svg class="star" viewBox="-292 -250 584 552" role="navigation" aria-label="진로·진학정보 전체 도표"><defs>${defs}
+    <radialGradient id="gc" cx=".38" cy=".28" r=".85"><stop offset="0" stop-color="#43c35a"/><stop offset=".55" stop-color="#1f9e3b"/><stop offset="1" stop-color="#0d5326"/></radialGradient>
+    <radialGradient id="gl" cx=".35" cy=".2" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#1d4a2c" flood-opacity=".16"/></filter></defs>
+    <g filter="url(#sh)">${g1}</g></svg>`;
+}
+
+
+/* ---------- 전국 발달장애인훈련센터 지도 ---------- */
+function kmapHTML(){
+  const K=window.KRMAP; if(!K) return '';
+  const near='경기발달장애인훈련센터';
+  const paths=K.paths.map(([id,ko,d])=>`<path class="kp${id==='gyeonggi'?' gg':''}" d="${d}"><title>${ko}</title></path>`).join('');
+  const dots=K.centers.map((c,i)=>`<g class="kd${c.n===near?' near':''}" data-k="${i}" transform="translate(${c.x} ${c.y})" tabindex="0" role="button" aria-label="${c.n}">${c.n===near?'<circle class="ring" r="11"/>':''}<circle r="5.6"/><title>${c.n}</title></g>`).join('');
+  const short=n=>n.replace('발달장애인훈련센터','');
+  return `<div class="kwrap">
+    <div class="kmap"><svg viewBox="40 20 400 610" role="group" aria-label="전국 발달장애인훈련센터 지도 — 점을 누르면 정보가 나와요">${paths}${dots}</svg>
+      <div class="kpop" id="kpop" hidden></div>
+      <p class="kcap">점을 누르면 센터 정보와 네이버 지도·홈페이지 바로가기가 나와요. <b>★</b> 우리 학교에서 가장 가까운 곳</p>
+      <p class="kcredit">지도 원본: SVG Maps(CC BY 4.0)</p></div>
+    <ul class="klist">${K.centers.map((c,i)=>`<li data-k="${i}" class="${c.n===near?'near':''}"><b>${short(c.n)}${c.n===near?' <em>★ 가장 가까움</em>':''}</b><span>${c.a}</span>
+      <span class="kbtn"><a class="nv" href="${naverQ(c.n)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>네이버 지도</a><a class="hp" href="${c.u}" target="_blank" rel="noopener">홈페이지 ↗</a></span></li>`).join('')}</ul>
+  </div>`;
+}
+function naverQ(n){ return 'https://map.naver.com/p/search/'+encodeURIComponent(n); }
+function showK(i){
+  const K=window.KRMAP, c=K.centers[i], pop=document.getElementById('kpop'); if(!pop) return;
+  document.querySelectorAll('.kd').forEach(g=>g.classList.toggle('sel',+g.dataset.k===i));
+  const vb=[40,20,400,610];
+  pop.style.left=((c.x-vb[0])/vb[2]*100)+'%'; pop.style.top=((c.y-vb[1])/vb[3]*100)+'%';
+  pop.classList.toggle('below',c.y<200);
+  pop.innerHTML=`<button type="button" class="kx" aria-label="닫기">×</button><b>${c.n}</b><span>${c.a}</span><span class="kbtn"><a class="nv" href="${naverQ(c.n)}" target="_blank" rel="noopener">네이버 지도</a><a class="hp" href="${c.u}" target="_blank" rel="noopener">홈페이지 ↗</a></span>`;
+  pop.hidden=false;
+  const li=document.querySelector(`.klist li[data-k="${i}"]`); document.querySelectorAll('.klist li').forEach(l=>l.classList.remove('flash')); if(li){ void li.offsetWidth; li.classList.add('flash'); }
+}
+/* ---------- 용인시 지도 (원본 지도 윤곽, 3개 구) ---------- */
+const GU_KEY={'수지':'suji','기흥':'giheung','처인':'cheoin'};
+const NOTE={'유플러스(주) 스탭스':'정보 확인 중','메이크위드보호작업장':'운영 여부 확인 중'};
+const HOME={'용인강남학교 전공과':'https://kangnam-s.goeyi.kr/','용인다움학교 전공과':'https://yongindaum-s.goeyi.kr/yongindaum-s/main.do'};
+const CAT={'jgg':'#ffcc00','yongin-std':'#ff7a1a','yongin-social':'#e2468f','day':'#2f6fde','after':'#f5b700','daytime':'#8a4fff'};
+function catColor(id){ return CAT[id]||'#ffd23f'; }
+function mapBlock(scope, sel, count, groups){
+  const M=window.MAPDATA; if(!M) return '';
+  const [bx0,by0,bx1,by1]=M.bbox, x0=bx0-6, y0=by0-6, w=bx1-bx0+16, h=by1-by0+16;
+  const shapes=['수지','기흥','처인'].map(g=>`<path class="gu-shape ${GU_KEY[g]}" data-gu="${g}" d="${M.paths[g]}"><title>${GU[g]}</title></path>`).join('');
+  const labels=['수지','기흥','처인'].map(g=>`<text class="gu-lb ${GU_KEY[g]}" data-gu="${g}" x="${M.centers[g][0]}" y="${M.centers[g][1]}">${GU[g]}</text>`).join('');
+  groups=groups||[];
+  const usedAt={}; let dots=''; const legend=[]; let missing=0;
+  groups.forEach(gr=>{
+    const col=catColor(gr.b.id); let shown=0;
+    gr.items.forEach(x=>{
+      const p=M.pos[x[0]]; if(!p){ missing++; return; }
+      const k=p.join(','); const i=usedAt[k]=(usedAt[k]??-1)+1;
+      const cx=p[0]+(i%2? 4.4:0)+(i>=2?-4.4:0), cy=p[1]+(i>=2?3:0);
+      shown++;
+      dots+=`<circle class="dot${sel&&sel!==x[2]?' off':''}" style="fill:${col}" data-name="${esc(x[0])}" data-cat="${gr.b.id}" data-gu="${x[2]}" cx="${cx}" cy="${cy}" r="2.3"><title>${esc(x[0])} · ${gr.b.title}</title></circle>`;
+    });
+    legend.push(`<li><i style="background:${col}"></i>${gr.b.title}<b>${shown}</b></li>`);
+  });
+  return `<div class="ymap-wrap">
+    <div class="ymap">
+      <svg class="gmap" data-scope="${scope}" data-sel="${sel}" viewBox="${x0} ${y0} ${w} ${h}" role="group" aria-label="용인시 지도 — 구에 대면 진해지고, 누르면 그 구의 기관이 나와요">
+        <path class="shadow" d="${M.outline}" transform="translate(3.5 4.5)"/>${shapes}${labels}${dots}
+      </svg>
+      ${legend.length?`<ul class="legend">${legend.join('')}</ul>`:''}
+      ${missing?`<p class="miss">○ ${missing}곳은 위치나 정보를 확인하는 중이라 지도에 점이 없어요.</p>`:''}
+      <p class="tap-hint" aria-live="polite">${sel?`${GU[sel]} 기관을 보고 있어요. 다른 구를 눌러 보세요.`:'구에 손가락이나 커서를 대면 진해져요. 한 번 더 누르면 기관이 나와요.'}</p>
+    </div>
+    <div class="flt gu-btns" data-scope="${scope}">${['','수지','기흥','처인'].map(a=>`<button type="button" data-gu="${a}" aria-pressed="${a===sel}">${a?GU[a]:'전체'}</button>`).join('')}</div>
+    <p class="cnt">${count}</p>
+  </div>`;
+}
+function naver(name){
+  let q=name.replace(/\([^)]*\)/g,' ').replace(/㈜|사단법인|사회적협동조합\s/g,' ').replace(/\s+/g,' ').trim();
+  if(!q.startsWith('용인')) q='용인 '+q;
+  return 'https://map.naver.com/p/search/'+encodeURIComponent(q);
+}
+function placeCard(x, cat){
+  const [n,d,a,t,e]=x; const M=window.MAPDATA||{pos:{},where:{}};
+  const has=!!M.pos[n];
+  return `<li data-name="${esc(n)}" data-cat="${cat||''}"><div class="pc-main"><div class="pc-top"><b><i class="cdot" style="background:${catColor(cat)}"></i>${n}</b><span class="area">${GU[a]}</span></div>
+    ${d?`<p>${d}${e?` <small>(${e})</small>`:''}</p>`:(e?`<p><small>${e}</small></p>`:'')}
+    ${has&&M.where&&M.where[n]?`<p class="where">📍 ${M.where[n]}</p>`:''}${!has?`<p class="where nopos">${NOTE[n]?`(${NOTE[n]})`:'위치 확인 중 · 네이버 지도에서 확인해 주세요'}</p>`:''}
+    <div class="pc-act">${t?telHTML(t):''}${HOME[n]?`<a class="hp2" href="${HOME[n]}" target="_blank" rel="noopener">홈페이지 ↗</a>`:''}<a class="nv" href="${naver(n.replace(/ 전공과$/,''))}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>네이버 지도</a></div></div></li>`;
+}
+function placeGroups(groups, showSec){
+  let h='';
+  groups.forEach(g=>{ h+=`<section class="pg"><h4><i class="cdot" style="background:${catColor(g.b.id)}"></i>${g.b.title} <small>${showSec?g.s.title+' · ':''}${g.items.length}곳</small></h4><ul class="pcards">${g.items.map(x=>placeCard(x,g.b.id)).join('')}</ul></section>`; });
+  return h;
+}
+const GUSTATE={};
+function sectionPlacesHTML(s){
+  const sel=GUSTATE[s.id]||'';
+  const groups=s.blocks.filter(b=>b.type==='places').map(b=>({s,b,items:b.items.filter(x=>!sel||x[2]===sel)})).filter(g=>g.items.length);
+  const n=groups.reduce((a,g)=>a+g.items.length,0);
+  return mapBlock(s.id, sel, `${sel?GU[sel]:'용인시 전체'} — 기관 ${n}곳`, s.blocks.filter(b=>b.type==='places').map(b=>({b,items:b.items}))) + `<div class="plist">${groups.length?placeGroups(groups,false):'<p class="empty">이 구에는 안내된 기관이 없어요. 다른 구를 눌러 보세요.</p>'}</div>`;
+}
+function setGu(scope, g){
+  GUSTATE[scope]=g;
+  if(scope==='find'){ findState.gu=g; updateFind(); return; }
+  const s=S.find(x=>x.id===scope); const box=document.getElementById('local-'+scope);
+  if(s&&box) box.innerHTML=sectionPlacesHTML(s);
+}
+
+/* ---------- 화면들 ---------- */
+function home(){
+  app.innerHTML = `
+  <div class="splash">
+    <div class="cover" role="img" aria-label="진로·진학정보 안내 표지">
+      <span class="ring" style="width:60cqw;height:60cqw;left:12%;top:-12%"></span>
+      <span class="ring" style="width:80cqw;height:80cqw;right:-30%;top:-8%"></span>
+      <img class="fill ph1" src="img/field1.jpg" alt="">
+      <span class="gold"></span>
+      <span class="tri"></span><span class="tri2"></span>
+      <span class="ph2w"></span>
+      <img class="fill ph2" src="img/field2.jpg" alt="">
+      <img class="leaves" src="img/leaves.png" alt="">
+      <div class="logo"><img src="img/emblem-full.png" alt=""><span>용인강남학교</span></div>
+      <h1><span class="a">진로·진학정보</span><span class="b">안내</span></h1>
+      <div class="en">Career &amp; College Guidance</div>
+      <div class="pill"><span class="globe"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18M5 7h14M5 17h14"/></svg></span><span class="txt"><b>용인강남학교</b><span>kangnam-s.goeyi.kr</span></span></div>
+      <div class="pub">제작·발행 용인강남학교 진로직업부</div>
+    </div>
+    <div class="gut start-wrap"><a class="start-btn" href="#star">우리 아이에게 맞는<br>진로진학 정보는? <span aria-hidden="true">→</span></a></div>
+  </div>`;
+}
+function starPage(){
+  app.innerHTML = `<div class="page star-page"><div class="gut"><div class="inner">
+    <p class="star-eye">용인강남학교 진로직업부</p>
+    <h2 class="star-title">진로·진학정보 안내</h2>
+    <p class="star-sub">궁금한 곳을 눌러 보세요</p>
+    ${star()}
+    <p class="star-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5"/></svg>검색에서는 기관 이름이나 하고 싶은 일로 찾을 수 있어요</p>
+    <a class="star-test" href="#test">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V18h5v-1.6c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3.5z"/><path d="M9.8 21h4.4"/></svg></span>
+      <span class="tx"><b>우리 아이 성향 파악하기</b><small>그림직업흥미검사 · 재미로 보는 용인강남 MBTI</small></span>
+      <span class="ar" aria-hidden="true">→</span></a>
+  </div></div></div>`;
+  scrollTo(0,0);
+}
+function testPage(){
+  app.innerHTML = `<div class="page">${WAVE_TL}<div class="gut"><div class="inner">
+    ${hang('성향 파악하기')}
+    <div class="content">
+      <section class="blk">
+        <h2 class="q-title">우리 아이 성향 파악하기</h2>
+        <p class="lead">아이가 무엇을 좋아하고 어떤 일에 흥미가 있는지 알아보세요. 누르면 검사 화면이 새 창으로 열려요.</p>
+      </section>
+      <div class="tests">
+        <a class="tcard t1" href="https://hub.kead.or.kr/ve/eovMbrPrsecAndNotMbrPrsecGuidance.do?qusId=T4" target="_blank" rel="noopener">
+          <span class="art" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="8" y="12" width="48" height="36" rx="6" fill="#fff"/><circle cx="22" cy="25" r="5" fill="#ffd23f"/><path d="M12 44l14-13 10 9 7-6 9 10z" fill="#47a552"/><path d="M26 54h12" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg></span>
+          <span class="tt"><small>한국장애인고용공단</small><b>그림직업흥미검사</b><span>글 대신 그림을 보고 좋아하는 일을 골라요. 아이의 직업 흥미를 알아볼 수 있어요.</span><i>검사하러 가기 ↗</i></span>
+        </a>
+        <a class="tcard t2" href="https://smore.im/quiz/C1V1DPTACg" target="_blank" rel="noopener">
+          <span class="art" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="22" fill="#fff"/><circle cx="24.5" cy="28" r="3" fill="#4a2a9e"/><circle cx="39.5" cy="28" r="3" fill="#4a2a9e"/><path d="M23 38c5 5.5 13 5.5 18 0" fill="none" stroke="#4a2a9e" stroke-width="3.4" stroke-linecap="round"/><circle cx="18" cy="35" r="3.4" fill="#ffb3c7"/><circle cx="46" cy="35" r="3.4" fill="#ffb3c7"/></svg></span>
+          <span class="tt"><small>재미로 해 보는 검사</small><b>재미로 보는 용인강남 MBTI</b><span>우리 아이 MBTI! 학생 스스로 혹은 부모님과 함께 해 보아요.</span><i>해 보러 가기 ↗</i></span>
+        </a>
+      </div>
+    </div>
+    <nav class="pager"><a href="#star"><small>← 처음으로</small>전체 도표</a><a class="nx" href="#guide"><small>더 알아보기 →</small>졸업 후 갈 수 있는 곳</a></nav>
+  </div></div>${WAVE_BR}</div>`;
+  scrollTo(0,0);
+}
+function hang(title){
+  return `<div class="hang"><div class="p"><span class="d" style="left:calc(12% - 4px)"></span><span class="d" style="right:calc(12% - 4px)"></span>${title}</div></div>`;
+}
+function section(s, jump){
+  const i=S.indexOf(s), prev=S[i-1], next=S[i+1];
+  const hasPlaces=s.blocks.some(b=>b.type==='places');
+  const local = hasPlaces ? `<section class="blk local" id="local"><div class="blk-h"><h3>우리 동네 ${s.title} 기관</h3><span class="meta">지도에서 구를 눌러 보세요</span></div><div id="local-${s.id}">${sectionPlacesHTML(s)}</div></section>` : '';
+  app.innerHTML = `<div class="page">${WAVE_TL}<div class="gut"><div class="inner">
+    ${hang(s.title)}
+    <div class="content">${local}${s.blocks.filter(b=>b.type!=='places').map(renderBlock).join('')}</div>
+    <nav class="pager" aria-label="다른 안내">
+      ${prev?`<a href="#${prev.id}"><small>← 이전</small>${prev.title}</a>`:`<a href="#star"><small>← 처음으로</small>전체 도표</a>`}
+      ${next?`<a class="nx" href="#${next.id}"><small>다음 →</small>${next.title}</a>`:`<a class="nx" href="#find"><small>다음 →</small>우리 동네 기관 찾기</a>`}
+    </nav></div></div>${WAVE_BR}</div>`;
+  if(jump){ const t=document.getElementById(jump)||(S.some(x=>x.blocks.some(b=>b.id===jump&&b.type==='places'))?document.getElementById('local'):null); t?.scrollIntoView(); } else scrollTo(0,0);
+}
+
+/* ---------- 찾기 (검색 + 지도) ---------- */
+const ALL = [];
+S.forEach(s=>s.blocks.forEach(b=>{ if(b.type==='places') b.items.forEach(x=>ALL.push({s,b,x})); }));
+let findState = {q:'', gu:''};
+function find(){
+  app.innerHTML = `<div class="page">${WAVE_TL}<div class="gut"><div class="inner">
+    ${hang('찾기')}
+    <div class="content">
+      <section class="blk">
+        <div class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="기관 이름이나 하고 싶은 일로 검색해 보세요" aria-label="기관 이름이나 하고 싶은 일로 검색" autocomplete="off" value="${esc(findState.q)}"></div>
+        <div class="sug" aria-label="이런 낱말로 찾아보세요">${['제과제빵','바리스타','포장','주간활동','방과후','긴급돌봄','전공과','장애인일자리'].map(w=>`<button type="button" data-q="${w}">${w}</button>`).join('')}</div>
+      </section>
+      <section class="blk"><div class="blk-h"><h3>우리 동네에서 찾기</h3><span class="meta">지도에서 구를 눌러 보세요</span></div><div id="mapbox"></div></section>
+      <div id="results" class="res" aria-live="polite"></div>
+    </div>
+    <nav class="pager"><a href="#star"><small>← 처음으로</small>전체 도표</a><a class="nx" href="#guide"><small>더 알아보기 →</small>갈 수 있는 곳 한눈에</a></nav>
+  </div></div>${WAVE_BR}</div>`;
+  $('#q').addEventListener('input', e=>{findState.q=e.target.value.trim(); updateFind();});
+  updateFind(); scrollTo(0,0);
+}
+function updateFind(){
+  const {q,gu}=findState;
+  const t=q.replace(/구$/,'');
+  const hits = ALL.filter(h=>(!gu||h.x[2]===gu) && (!t || (h.x[0]+h.x[1]+h.b.title+GU[h.x[2]]).includes(t)));
+  const groups=new Map();
+  hits.forEach(h=>{ if(!groups.has(h.b)) groups.set(h.b,{s:h.s,b:h.b,items:[]}); groups.get(h.b).items.push(h.x); });
+  let info=[];
+  if(t){ S.forEach(s=>s.blocks.forEach(b=>{ if(b.type==='places') return;
+      const txt=strip(JSON.stringify([b.title,b.org,b.items,b.rows,b.groups,b.root]));
+      if(txt.includes(t)) info.push({s,b}); })); }
+  $('#mapbox').innerHTML = mapBlock('find', gu, `${gu?GU[gu]:'용인시 전체'}${t?` · ‘${esc(q)}’`:''} — 기관 ${hits.length}곳`, (()=>{const m=new Map();(t?hits:ALL).forEach(h=>{if(!m.has(h.b))m.set(h.b,{b:h.b,items:[]});m.get(h.b).items.push(h.x);});return [...m.values()];})());
+  let html='';
+  if(info.length) html+=`<section><h4>안내 ${info.length}건</h4><ul class="info-hits">${info.map(({s,b})=>`<li><a href="#${s.id}" data-jump="${b.id}"><small>${s.title}</small>${b.title||strip(b.org).replace(/\[기관명: |\]/g,'')} →</a></li>`).join('')}</ul></section>`;
+  html+=placeGroups([...groups.values()], true);
+  if(!html) html=`<p class="empty">찾는 내용이 없어요. 다른 낱말로 찾거나 ‘전체’를 눌러 보세요.</p>`;
+  $('#results').innerHTML = html;
+}
+
+/* ---------- 졸업 후 우리 아이가 갈 수 있는 곳? ---------- */
+function guide(){
+  const P = [
+    {id:'jinhak',n:'1',t:'진학',one:'더 배우고 싶을 때',
+     who:'학교를 마친 뒤에도 공부하며 자립과 직업을 더 준비하고 싶은 학생',
+     what:'<b>전공과</b>: 특수학교(급)에서 직업과 자립생활을 더 배우는 과정 (전국 42개교, 139학급)<br><b>대학</b>: 장애인 등 대상자 특별전형(118개 대학), 장애학생 학위과정(7개 대학), 비학위과정(대구대 K-PACE센터, 호산나대학)<br><b>평생교육</b>: 대학 평생교육원, 지역사회 평생교육 프로그램',
+     when:'학교별 전공과 전형 설명회, 대학 모집요강 확인',
+     next:'전공과나 대학을 마친 뒤 <b>취업</b>이나 <b>교육 및 훈련기관</b>으로 이어집니다.'},
+    {id:'chwieop',n:'2',t:'취업',one:'일하고 싶을 때',
+     who:'일하며 월급을 받고 싶은 학생',
+     what:'<b>공공기관</b>: 학교내 장애인일자리(경기도교육청), 장애인일자리(보건복지부), 권리중심 공공일자리(경기도)<br><b>장애인 직업재활시설</b>: 보호작업장, 근로사업장<br><b>일반사업체</b>: 표준사업장, 사회적기업, 협동조합<br><b>자영업(창업)</b>, <b>예술·체육 분야</b>',
+     when:'고3 9월경 학교내 장애인일자리 선발 · 매년 11~12월 장애인일자리 참여자 모집 · 고3·전공과 재학 중에는 복지일자리(특수교육연계형) 참여 가능',
+     next:'일하다 쉬게 되면 다시 <b>훈련</b>을 받거나 <b>주간활동</b>을 이용할 수 있어요.'},
+    {id:'hullyeon',n:'3',t:'교육 및 훈련기관',one:'일하기 전에 연습이 더 필요할 때',
+     who:'바로 취업하기는 어렵지만 일할 준비를 하고 싶은 학생',
+     what:'<b>발달장애인훈련센터</b>: 직업체험(재학 중에도 가능) → 직업훈련 → 취업알선<br><b>일산직업능력개발원</b>: 장애인 전용 공공 직업훈련기관<br><b>장애인복지관</b>: 직업적응훈련, 직업상담·평가<br><b>직업적응훈련시설</b>, <b>창업진흥원</b>',
+     when:'일산직업능력개발원은 연중 수시 접수(월 1회 이상 선발평가) · 훈련센터 직업체험관은 고등학교·전공과 재학 중 이용',
+     next:'훈련을 마치면 <b>취업</b>으로 연결해 줍니다.'},
+    {id:'siseol',n:'4',t:'지역사회 유관 시설',one:'낮 시간을 보내거나 생활할 곳이 필요할 때',
+     who:'취업이나 진학 대신 지역에서 활동하고 생활할 곳이 필요한 학생',
+     what:'<b>주간이용센터</b>: 장애인복지관, 주간보호센터 등 (용인 9곳)<br><b>거주시설</b>: 공동생활가정(그룹홈), 단기거주시설 등<br><b>재활 관련 기관</b>: 장애인가족지원센터, 장애인인권센터, 수어통역센터 등',
+     when:'시설마다 대기가 있을 수 있어 졸업 전 미리 상담',
+     next:'복지관에서 <b>직업적응훈련</b>을 받아 일할 준비로 이어지기도 해요.'},
+    {id:'bokji',n:'5',t:'복지 서비스',one:'어느 길을 가든 함께',
+     who:'모든 발달장애인 학생과 가족',
+     what:'<b>방과후활동서비스</b>: 학교에 다니는 동안 방과 후 시간<br><b>주간활동서비스</b>: 졸업 후 낮 시간 활동<br><b>긴급돌봄서비스</b>: 보호자가 입원, 경조사, 지침 등으로 돌볼 수 없을 때 (6~64세, 최대 7일)',
+     when:'긴급돌봄 문의: 경기발달장애인지원센터 031-895-6163',
+     next:'진학·취업·훈련·시설 어느 길과도 <b>함께</b> 이용할 수 있어 메뉴 가운데에 두었어요.'}
+  ];
+  app.innerHTML = `<div class="page">${WAVE_TL}<div class="gut"><div class="inner">
+    ${hang('졸업 후 갈 수 있는 곳')}
+    <div class="content">
+      <section class="blk">
+        <h2 class="q-title">졸업 후 우리 아이가 갈 수 있는 곳?</h2>
+        <p class="lead">고등학교나 전공과를 마친 뒤의 길은 크게 네 갈래예요. 더 배우는 길, 일하는 길, 일할 준비를 하는 길, 지역에서 지내는 길. 그리고 어느 길을 가든 복지서비스를 함께 이용할 수 있어요.</p>
+        <div class="flow">
+          <div class="start">졸업 (고3 · 전공과)</div><span class="arrow" aria-hidden="true"></span>
+          <div class="paths">
+            <a href="#jinhak" style="background:#e6dcfb"><b>진학</b><span>더 배우고 싶을 때</span><i>대학 · 전공과 · 평생교육</i></a>
+            <a href="#chwieop" style="background:var(--peach)"><b>취업</b><span>일하고 싶을 때</span><i>공공일자리 · 사업장</i></a>
+            <a href="#hullyeon" style="background:#dff1c9"><b>교육 및 훈련기관</b><span>일할 준비가 더 필요할 때</span><i>훈련센터 · 개발원</i></a>
+            <a href="#siseol" style="background:var(--mint)"><b>지역사회 유관 시설</b><span>낮 활동·생활할 곳이 필요할 때</span><i>복지관 · 주간보호 · 그룹홈</i></a>
+          </div>
+          <span class="arrow" aria-hidden="true"></span>
+          <a class="wel" href="#bokji"><b>복지 서비스</b><span>방과후활동 · 주간활동 · 긴급돌봄 — 어느 길과도 함께</span></a>
+        </div>
+      </section>
+
+      <section class="blk"><div class="blk-h"><h3>이렇게 이어져요</h3></div>
+        <ul class="rel">
+          <li><span class="ar">진학 → 취업</span><span>전공과나 대학을 마친 뒤 취업하는 경우가 많아요.</span></li>
+          <li><span class="ar">훈련 → 취업</span><span>발달장애인훈련센터는 훈련 뒤 취업알선까지 이어 줘요.</span></li>
+          <li><span class="ar">시설 → 훈련</span><span>장애인복지관에서 직업적응훈련을 받으며 일할 준비를 할 수 있어요.</span></li>
+          <li><span class="ar">모두 + 복지</span><span>어느 길을 가든 주간활동, 긴급돌봄 같은 복지서비스를 함께 이용할 수 있어요.</span></li>
+        </ul>
+      </section>
+
+      <section class="blk"><div class="blk-h"><h3>용인 권역 특수학교 졸업생들은 어디로 갔을까요?</h3><span class="meta">2025년 2월 기준 · 권역내 여러 학교 합계</span></div>
+        <div class="note"><ul><li>권역 졸업생 276명 중 <b>78%(215명)</b>가 취업하거나 진학했어요.</li><li>전공과 78명, 대학 58명, 산업체 49명, 일자리 사업·보호작업장 27명, 각급기관 내 일자리 3명, 시설 31명, 가정 30명</li></ul>
+        <a class="go" href="#jinhak" data-jump="stat">현황 자세히 보기 →</a></div>
+      </section>
+
+      ${P.map(p=>`<section class="blk path" id="g-${p.id}"><header><em>${p.n}</em><b>${p.t}</b><span>${p.one}</span></header>
+        <dl><div><dt>이런 학생</dt><dd>${p.who}</dd></div><div><dt>어떤 곳</dt><dd>${p.what}</dd></div><div><dt>준비 시기</dt><dd>${p.when}</dd></div><div><dt>그다음은</dt><dd>${p.next}</dd></div></dl>
+        <a class="go" href="#${p.id}">${p.t} 자세히 보기 →</a></section>`).join('')}
+
+      <section class="blk"><div class="blk-h"><h3>언제 무엇을 준비할까요?</h3></div>
+        <div class="tbl"><table><thead><tr><th>시기</th><th>할 일</th><th>대상</th></tr></thead><tbody>
+          <tr><td><b>9월경</b></td><td class="l">학교내 장애인일자리(경기도교육청) 선발</td><td>고3, 전공과 졸업예정자</td></tr>
+          <tr><td><b>11~12월</b></td><td class="l">다음 해 장애인일자리 참여자 모집 (시·군·구청)</td><td>만 18세 이상 미취업 등록장애인</td></tr>
+          <tr><td><b>학교별</b></td><td class="l">전공과 전형 설명회, 대학 특별전형 모집요강 확인</td><td>진학 희망 학생</td></tr>
+          <tr><td><b>연중 수시</b></td><td class="l">일산직업능력개발원 입학 (월 1회 이상 선발평가)</td><td>만 15세 이상 구직등록 장애인</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section class="blk"><div class="blk-h"><h3>막막할 때 먼저 물어볼 곳</h3></div>
+        <div class="note"><ul>
+          <li>담임 선생님, 용인강남학교 진로직업부</li>
+          <li>경기발달장애인지원센터 ${telHTML('031-895-6163')}</li>
+          <li>장애인일자리: 사는 곳 구청의 장애인일자리 담당자</li>
+        </ul></div>
+      </section>
+    </div>
+    <nav class="pager"><a href="#star"><small>← 처음으로</small>전체 도표</a><a class="nx" href="#jinhak"><small>차례대로 보기 →</small>1. 진학</a></nav>
+  </div></div>${WAVE_BR}</div>`;
+  scrollTo(0,0);
+}
+
+/* ---------- 이동 ---------- */
+let pendingJump=null, pendingHL=null;
+function route(){
+  const id=location.hash.slice(1)||'home';
+  const s=S.find(x=>x.id===id);
+  $('#bar').hidden = id==='home';
+  $('#appfoot').hidden = id==='home';
+  $('#homeBtn').hidden = id==='star';
+  $('#findBtn').hidden = id==='find';
+  if(s){ section(s,pendingJump); if(pendingHL){ const jj=pendingJump, hh=pendingHL; setTimeout(()=>flashHL(jj,hh),350); } }
+  else if(id==='find') find();
+  else if(id==='guide') guide();
+  else if(id==='star') starPage();
+  else if(id==='test') testPage();
+  else { home(); scrollTo(0,0); }
+  pendingJump=null; pendingHL=null;
+}
+document.addEventListener('click', e=>{
+  const j=e.target.closest('[data-jump]');
+  if(j){ const tgt=j.getAttribute('href').slice(1);
+    if(location.hash.slice(1)===tgt){ e.preventDefault(); document.getElementById(j.dataset.jump)?.scrollIntoView({behavior:'smooth'}); if(j.dataset.hl) setTimeout(()=>flashHL(j.dataset.jump,j.dataset.hl),400); }
+    else { pendingJump=j.dataset.jump; pendingHL=j.dataset.hl||null; } return; }
+  const gb=e.target.closest('.gu-btns button');
+  if(gb){ setGu(gb.parentElement.dataset.scope, gb.dataset.gu); return; }
+  const kd=e.target.closest('.kd'); if(kd){ showK(+kd.dataset.k); return; }
+  if(e.target.closest('.kx')){ document.getElementById('kpop').hidden=true; document.querySelectorAll('.kd').forEach(g=>g.classList.remove('sel')); return; }
+  const kli=e.target.closest('.klist li'); if(kli && !e.target.closest('a')){ showK(+kli.dataset.k); document.querySelector('.kmap')?.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  const dot=e.target.closest('.gmap .dot');
+  if(dot){ const svg=dot.closest('.gmap'), scope=svg.dataset.scope, name=dot.dataset.name, dg=dot.dataset.gu;
+    if(lastPointer!=='mouse' && svg.dataset.hover!==dg && (GUSTATE[scope]||'')!==dg){ svg.dataset.hover=dg; const hn=svg.parentElement.querySelector('.tap-hint'); if(hn) hn.textContent=`${GU[dg]}예요. 한 번 더 누르면 기관이 나와요.`; return; }
+    if((GUSTATE[scope]||'')!==dot.dataset.gu) setGu(scope, dot.dataset.gu);
+    const li=[...document.querySelectorAll('.pcards li')].find(l=>l.dataset.name===name&&l.dataset.cat===dot.dataset.cat)||[...document.querySelectorAll('.pcards li')].find(l=>l.dataset.name===name);
+    if(li){ li.scrollIntoView({behavior:'smooth',block:'center'}); li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash'); }
+    return; }
+  const shp=e.target.closest('.gmap .gu-shape, .gmap .gu-lb');
+  if(shp){ const svg=shp.closest('.gmap'), scope=svg.dataset.scope;
+    const g=shp.dataset.gu||[...svg.querySelectorAll('.gu-shape')].find(p=>p.classList.contains([...shp.classList].find(c=>c!=='gu-lb')))?.dataset.gu;
+    if(!g) return;
+    if(lastPointer!=='mouse' && svg.dataset.hover!==g){ svg.dataset.hover=g; const hn=svg.parentElement.querySelector('.tap-hint'); if(hn) hn.textContent=`${GU[g]}예요. 한 번 더 누르면 기관이 나와요.`; return; }
+    setGu(scope, g); return; }
+  const sq=e.target.closest('[data-q]');
+  if(sq){ findState.q=sq.dataset.q; $('#q').value=sq.dataset.q; updateFind(); return; }
+  const c=e.target.closest('.cp');
+  if(c){ const ok=()=>{c.textContent='복사됨';c.classList.add('ok');setTimeout(()=>{c.textContent='복사';c.classList.remove('ok');},1500);};
+    const fb=()=>{const a=c.previousElementSibling;const r=document.createRange();r.selectNodeContents(a);const s=getSelection();s.removeAllRanges();s.addRange(r);};
+    try{navigator.clipboard.writeText(c.dataset.copy).then(ok,fb);}catch(_){fb();} return; }
+  const f=e.target.closest('.flt[data-for] button');
+  if(f){ const w=f.parentElement,a=f.dataset.a;
+    w.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b===f));
+    document.querySelectorAll(`#t-${w.dataset.for} tbody tr`).forEach(tr=>tr.hidden=!!a&&tr.dataset.a!==a); }
+});
+function flashHL(id,hl){
+  const box=document.getElementById(id==='local'?'local':id); if(!box) return;
+  const els=[...box.querySelectorAll('tr, .pcards li, .cmp > div, .pg')].filter(e=>e.textContent.includes(hl));
+  const t=els[0]; if(!t) return;
+  t.scrollIntoView({behavior:'smooth',block:'center'});
+  els.slice(0,6).forEach(e=>{ e.classList.remove('flash'); void e.offsetWidth; e.classList.add('flash'); });
+}
+let lastPointer='mouse';
+document.addEventListener('pointerdown',e=>{lastPointer=e.pointerType||'mouse';},true);
+document.addEventListener('keydown',e=>{ const kd=e.target.closest&&e.target.closest('.kd'); if(kd&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); showK(+kd.dataset.k);} });
+document.addEventListener('touchstart',()=>{lastPointer='touch';},{capture:true,passive:true});
+document.addEventListener('pointerover',e=>{ if(e.pointerType!=='mouse') return; const p=e.target.closest('.gmap .gu-shape'); const svg=e.target.closest('.gmap'); if(svg) svg.dataset.hover=p?p.dataset.gu:''; });
+document.addEventListener('pointerout',e=>{ if(e.pointerType!=='mouse') return; const svg=e.target.closest('.gmap'); if(svg && !svg.contains(e.relatedTarget)) svg.dataset.hover=''; });
+addEventListener('hashchange',route);
+route();
+</script>
+
+<script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body>
+</html>
