@@ -347,6 +347,7 @@ td b{font-weight:700}
 .appfoot .sig{font-size:10px;color:#a3a89f;letter-spacing:.02em}
 /* 조직도형 도표 */
 .org{display:grid;gap:0;justify-items:center;background:linear-gradient(180deg,#f6faf4,#fff);border:1.5px solid #e2e9de;border-radius:22px;padding:22px 16px 18px}
+.org-root small{display:block;margin-top:8px;font-size:13px;color:var(--g-deep);font-weight:600;word-break:keep-all;text-align:center}
 .org-root span{display:inline-block;background:var(--g-deep);color:#fff;font-weight:900;font-size:18px;letter-spacing:-.02em;padding:10px 26px;border-radius:99px;box-shadow:0 6px 14px -8px rgba(14,74,34,.6)}
 .org-row{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px;width:100%;margin-top:30px}
 .org-row::before{content:"";position:absolute;top:-30px;left:50%;width:2px;height:15px;background:#9fbfa6;transform:translateX(-50%)}
@@ -454,6 +455,12 @@ tr.flash td{animation:flash 1.6s ease-out}
 .gmap .dot{stroke:#fff;stroke-width:.9;cursor:pointer;filter:drop-shadow(0 .4px .6px rgba(0,0,0,.45))}
 .gmap .dot.off{opacity:.25}
 .gmap .dot:hover{stroke:#111}
+.gmap .dot.hit{stroke:#111;stroke-width:1.1}
+.gmap .ping{fill:none;stroke-width:1.6;transform-box:fill-box;transform-origin:center;animation:ping 1.1s ease-out 3;pointer-events:none}
+@keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(3.4);opacity:0}}
+.pcards li[data-pos]{cursor:pointer}
+.pc-act .onmap{display:inline-flex;align-items:center;gap:4px;font:inherit;font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;border:1.5px solid var(--g);background:#fff;color:var(--g);cursor:pointer}
+.pc-act .onmap svg{width:14px;height:14px}
 .tap-hint{margin:2px 4px 0;font-size:13px;color:var(--muted);text-align:center}
 .pcards li.flash{animation:flash 1.6s ease-out}
 @keyframes flash{0%{background:#fff3b0}100%{background:#fff}}
@@ -612,9 +619,9 @@ const S = [
   ]}
  ]},
 
-{ id:'hullyeon', no:3, title:'교육 및 훈련기관', sub:'지역사회 생활 유형, 지역사회 교육 및 훈련기관(발달장애인훈련센터, 한국장애인개발원, 장애인복지관, 일산직업능력개발원), 창업진흥원',
+{ id:'hullyeon', no:3, title:'교육 및 훈련기관', sub:'취업·진학 외 지역사회 생활 유형, 지역사회 교육 및 훈련기관(발달장애인훈련센터, 한국장애인개발원, 장애인복지관, 일산직업능력개발원), 창업진흥원',
   blocks:[
-  {id:'unemp', type:'tree', title:'지역사회 생활 유형', meta:'항목을 누르면 지도·목록으로 가요', root:'지역사회 생활 유형', items:[
+  {id:'unemp', type:'tree', title:'취업·진학 외 지역사회 생활 유형', meta:'항목을 누르면 지도·목록으로 가요', root:'취업·진학 외 지역사회 생활 유형', rootSub:'일하지 않을 때도 지역에서 배우고 생활할 수 있어요', items:[
     ['거주시설',[['단기거주시설','siseol','gg-res','단기거주시설'],['공동생활가정(그룹홈)','siseol','gg-res','공동생활가정']],'','home','생활하며 지내는 곳'],
     ['지역사회 재활시설',[['장애인복지관','siseol','local','복지관'],['맞춤형센터','siseol','local'],['발달장애인훈련센터','hullyeon','dtc-map'],['직업적응훈련시설','chwieop','rehab','직업적응훈련시설'],['주간활동시설','bokji','local','주간활동'],['주간보호시설','siseol','local','주간']],'','book','낮 동안 다니며 배우는 곳'],
     ['가정',[['가정에서 생활하며 복지서비스 이용','bokji','local']],'','heart','집에서 지내는 경우']
@@ -798,7 +805,7 @@ function renderBlock(b){
   }
   if(b.type==='tree'){
     const PAL=[['#e7f6ee','#2f9e5b'],['#eef0ff','#5b5bd6'],['#fff2e3','#d9822b']];
-    h=`<div class="org"><div class="org-root"><span>${b.root}</span></div><div class="org-row" style="--n:${b.items.length}">${b.items.map(([m,ls,_c,ic,sub],i)=>{const [bg,fg]=PAL[i%3];
+    h=`<div class="org"><div class="org-root"><span>${b.root}</span>${b.rootSub?`<small>${b.rootSub}</small>`:''}</div><div class="org-row" style="--n:${b.items.length}">${b.items.map(([m,ls,_c,ic,sub],i)=>{const [bg,fg]=PAL[i%3];
       return `<div class="org-b" style="--bg:${bg};--fg:${fg}"><div class="org-h"><span class="org-ic"><svg viewBox="0 0 24 24">${ICON[ic]||ICON.home}</svg></span><span><b>${m}</b>${sub?`<small>${sub}</small>`:''}</span></div><ul>${ls.map(l=>Array.isArray(l)?`<li><a class="orl" href="#${l[1]}" data-jump="${l[2]}"${l[3]?` data-hl="${l[3]}"`:''}>${l[0]} <span aria-hidden="true">›</span></a></li>`:`<li>${l}</li>`).join('')}</ul></div>`;}).join('')}</div></div>`;
   }
   if(b.type==='kmap'){ h=kmapHTML(); }
@@ -959,6 +966,20 @@ function mapBlock(scope, sel, count, groups){
     <p class="cnt">${count}</p>
   </div>`;
 }
+function showOnMap(name, cat){
+  const svg=document.querySelector('.gmap'); if(!svg) return;
+  let dot=[...svg.querySelectorAll('.dot')].find(d=>d.dataset.name===name&&d.dataset.cat===cat)||[...svg.querySelectorAll('.dot')].find(d=>d.dataset.name===name);
+  if(!dot) return;
+  svg.querySelectorAll('.ping').forEach(r=>r.remove()); svg.querySelectorAll('.dot.hit').forEach(d=>{d.classList.remove('hit');d.setAttribute('r','2.3');});
+  svg.appendChild(dot); dot.classList.add('hit'); dot.setAttribute('r','3.6');
+  const col=dot.style.fill;
+  for(const dl of [0,.35]){ const r=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    r.setAttribute('class','ping'); r.setAttribute('cx',dot.getAttribute('cx')); r.setAttribute('cy',dot.getAttribute('cy')); r.setAttribute('r','2.6');
+    r.style.stroke=col; r.style.animationDelay=dl+'s'; svg.appendChild(r); setTimeout(()=>r.remove(),3800); }
+  setTimeout(()=>{dot.classList.remove('hit');dot.setAttribute('r','2.3');},4000);
+  const hn=svg.parentElement.querySelector('.tap-hint'); if(hn) hn.textContent=`📍 ${name}`;
+  svg.scrollIntoView({behavior:'smooth',block:'center'});
+}
 function naver(name){
   let q=name.replace(/\([^)]*\)/g,' ').replace(/㈜|사단법인|사회적협동조합\s/g,' ').replace(/\s+/g,' ').trim();
   if(!q.startsWith('용인')) q='용인 '+q;
@@ -967,10 +988,10 @@ function naver(name){
 function placeCard(x, cat){
   const [n,d,a,t,e]=x; const M=window.MAPDATA||{pos:{},where:{}};
   const has=!!M.pos[n];
-  return `<li data-name="${esc(n)}" data-cat="${cat||''}"><div class="pc-main"><div class="pc-top"><b><i class="cdot" style="background:${catColor(cat)}"></i>${n}</b><span class="area">${GU[a]}</span></div>
+  return `<li data-name="${esc(n)}" data-cat="${cat||''}"${has?' data-pos':''}><div class="pc-main"><div class="pc-top"><b><i class="cdot" style="background:${catColor(cat)}"></i>${n}</b><span class="area">${GU[a]}</span></div>
     ${d?`<p>${d}${e?` <small>(${e})</small>`:''}</p>`:(e?`<p><small>${e}</small></p>`:'')}
     ${has&&M.where&&M.where[n]?`<p class="where">📍 ${M.where[n]}</p>`:''}${!has?`<p class="where nopos">${NOTE[n]?`(${NOTE[n]})`:'위치 확인 중 · 네이버 지도에서 확인해 주세요'}</p>`:''}
-    <div class="pc-act">${t?telHTML(t):''}${HOME[n]?`<a class="hp2" href="${HOME[n]}" target="_blank" rel="noopener">홈페이지 ↗</a>`:''}<a class="nv" href="${naver(n.replace(/ 전공과$/,''))}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>네이버 지도</a></div></div></li>`;
+    <div class="pc-act">${t?telHTML(t):''}${HOME[n]?`<a class="hp2" href="${HOME[n]}" target="_blank" rel="noopener">홈페이지 ↗</a>`:''}${has?`<button type="button" class="onmap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/></svg>지도에서 보기</button>`:''}<a class="nv" href="${naver(n.replace(/ 전공과$/,''))}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>네이버 지도</a></div></div></li>`;
 }
 function placeGroups(groups, showSec){
   let h='';
@@ -1255,6 +1276,8 @@ document.addEventListener('click', e=>{
     const li=[...document.querySelectorAll('.pcards li')].find(l=>l.dataset.name===name&&l.dataset.cat===dot.dataset.cat)||[...document.querySelectorAll('.pcards li')].find(l=>l.dataset.name===name);
     if(li){ li.scrollIntoView({behavior:'smooth',block:'center'}); li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash'); }
     return; }
+  const pli=e.target.closest('.pcards li[data-pos]');
+  if(pli && (e.target.closest('.onmap') || !e.target.closest('a,button'))){ showOnMap(pli.dataset.name, pli.dataset.cat); return; }
   const shp=e.target.closest('.gmap .gu-shape, .gmap .gu-lb');
   if(shp){ const svg=shp.closest('.gmap'), scope=svg.dataset.scope;
     const g=shp.dataset.gu||[...svg.querySelectorAll('.gu-shape')].find(p=>p.classList.contains([...shp.classList].find(c=>c!=='gu-lb')))?.dataset.gu;
