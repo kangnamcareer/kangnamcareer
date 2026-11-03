@@ -980,7 +980,9 @@ function showOnMap(name, cat){
   const hn=svg.parentElement.querySelector('.tap-hint'); if(hn) hn.textContent=`📍 ${name}`;
   svg.scrollIntoView({behavior:'smooth',block:'center'});
 }
+const NAVQ={'벗이 (용인정신병원)':'경기 용인시 기흥구 중부대로 940'};
 function naver(name){
+  if(NAVQ[name]) return 'https://map.naver.com/p/search/'+encodeURIComponent(NAVQ[name]);
   let q=name.replace(/\([^)]*\)/g,' ').replace(/㈜|사단법인|사회적협동조합\s/g,' ').replace(/\s+/g,' ').trim();
   if(!q.startsWith('용인')) q='용인 '+q;
   return 'https://map.naver.com/p/search/'+encodeURIComponent(q);
