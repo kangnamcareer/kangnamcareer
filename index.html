@@ -297,14 +297,15 @@ td b{font-weight:700}
 .star .seg{stroke-linejoin:round;transition:filter .2s}
 .star .pt:hover .seg,.star .pt:focus-visible .seg{filter:saturate(1.3) brightness(.97)}
 .star text{font-family:var(--kr);text-anchor:middle;dominant-baseline:middle;pointer-events:none}
-.star .lb{font-family:'Jua','Noto Sans KR',sans-serif;font-weight:400;font-size:22px;letter-spacing:-.01em}
-.star .ctr{font-weight:900;font-size:38px;fill:#fff;letter-spacing:-.04em}
-.star .ctr2{font-weight:700;font-size:24px;fill:#e5f7df;letter-spacing:-.02em}
+.star .lb{font-family:'Jua','Noto Sans KR',sans-serif;font-weight:400;font-size:25.5px;letter-spacing:-.01em}
+.star .ctr{font-weight:900;font-size:34px;fill:#fff;letter-spacing:-.04em}
+.star .ctr2{font-weight:700;font-size:22px;fill:#e5f7df;letter-spacing:-.02em}
 .star .ctr3{font-size:14.5px;fill:#fff;font-weight:700}
 .star .ctr-go rect{fill:rgba(255,255,255,.2);stroke:rgba(255,255,255,.55);stroke-width:1.2}
-.star .neon{fill:none;stroke:#8dff3f;stroke-linejoin:round}
-.star .neon-glow{fill:none;stroke:#b4ff5a;stroke-linejoin:round;filter:url(#nglow);opacity:.9;animation:neon 2.4s ease-in-out infinite}
-@keyframes neon{0%,100%{opacity:.55}50%{opacity:1}}
+.star .neon{fill:none;stroke:#00c8ff;stroke-linejoin:round}
+.star .neon-in{fill:none;stroke:#fff;stroke-linejoin:round}
+.star .neon-glow{fill:none;stroke:#00e5ff;stroke-linejoin:round;filter:url(#nglow);animation:neon 1.6s ease-in-out infinite}
+@keyframes neon{0%,100%{opacity:.45}50%{opacity:1}}
 @media (prefers-reduced-motion:reduce){.star .neon-glow{animation:none}}
 .star-hint{display:flex;align-items:center;justify-content:center;gap:6px;margin:6px 0 0;font-size:14px;color:#4b5563;text-align:center}
 .star-hint svg{width:16px;height:16px;fill:none;stroke:var(--navy);stroke-width:2.4;stroke-linecap:round;flex:none}
@@ -928,11 +929,11 @@ const ICON={
   heart:'<path d="M12 20s-7.5-4.6-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/>'
 };
 function star(){
-  const r=150, g=14, round=9;
+  const r=134, g=24, round=9;
   const rad=d=>d*Math.PI/180, P=(R,d)=>[R*Math.cos(rad(d)), R*Math.sin(rad(d))];
   const f=n=>n.toFixed(1);
   const V=[0,1,2,3,4,5].map(j=>P(r,60*j));            // 육각형 꼭짓점 (좌우가 뾰족)
-  const a=r*Math.cos(rad(30)), half=r/2, h=half*Math.tan(rad(64));
+  const a=r*Math.cos(rad(30)), half=(a+g)*Math.tan(rad(30))-7, h=half*Math.tan(rad(66));
   // k: 변 번호 (변 k = V[k]→V[k+1], 바깥 방향 60k+30°)
   const pts=[
     {k:4, href:'#bokji', l:['복지','서비스'], icon:'heart', c:['#f2fff0','#9be88f'], ink:'#0d5326', neon:true},
@@ -946,30 +947,30 @@ function star(){
   pts.forEach((p,i)=>{
     const nd=60*p.k+30, [nx,ny]=P(1,nd);
     const v1=V[p.k], v2=V[(p.k+1)%6];
-    const tx=(v2[0]-v1[0])/(2*half), ty=(v2[1]-v1[1])/(2*half), inset=round*0.9;
-    const b1=[v1[0]+nx*g+tx*inset, v1[1]+ny*g+ty*inset], b2=[v2[0]+nx*g-tx*inset, v2[1]+ny*g-ty*inset];
+    const tx=(v2[0]-v1[0])/r, ty=(v2[1]-v1[1])/r, inset=round*0.9, mid=P(a+g,nd);
+    const b1=[mid[0]-tx*(half-inset), mid[1]-ty*(half-inset)], b2=[mid[0]+tx*(half-inset), mid[1]+ty*(half-inset)];
     const ap=P(a+g+h-round*1.6, nd), bm=P(a+g, nd);
     defs+=`<linearGradient id="pg${i}" gradientUnits="userSpaceOnUse" x1="${f(bm[0])}" y1="${f(bm[1])}" x2="${f(ap[0])}" y2="${f(ap[1])}"><stop offset="0" stop-color="${p.c[0]}"/><stop offset="1" stop-color="${p.c[1]}"/></linearGradient>`;
-    const [cx,cy]=P(a+g+h*0.36, nd), lh=23, bh=36+6+p.l.length*lh, top=cy-bh/2;
-    const ix=cx, iy=top+18, ly=top+36+6+lh/2;
-    let t=`<g class="badge" transform="translate(${f(ix)} ${f(iy)})"><circle r="18" fill="#fff"/><g transform="translate(-11.4 -11.4) scale(.95)" fill="none" stroke="${p.ink}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICON[p.icon]}</g></g>`;
+    const [cx,cy]=P(a+g+h*0.35, nd), lh=27, bh=42+6+p.l.length*lh, top=cy-bh/2;
+    const ix=cx, iy=top+21, ly=top+42+6+lh/2;
+    let t=`<g class="badge" transform="translate(${f(ix)} ${f(iy)})"><circle r="21" fill="#fff"/><g transform="translate(-13.2 -13.2) scale(1.1)" fill="none" stroke="${p.ink}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICON[p.icon]}</g></g>`;
     let y=ly;
     p.l.forEach(l=>{t+=`<text class="lb" x="${f(cx)}" y="${f(y)}" fill="${p.ink}">${l}</text>`; y+=lh;});
     const d=`M${f(b1[0])} ${f(b1[1])}L${f(ap[0])} ${f(ap[1])}L${f(b2[0])} ${f(b2[1])}Z`;
-    const glow=p.neon?`<path class="neon-glow" d="${d}" stroke-width="${round*2+14}"/><path class="neon" d="${d}" stroke-width="${round*2+7}"/>`:'';
+    const glow=p.neon?`<path class="neon-glow" d="${d}" stroke-width="${round*2+26}"/><path class="neon" d="${d}" stroke-width="${round*2+12}"/><path class="neon-in" d="${d}" stroke-width="${round*2+4}"/>`:'';
     g1+=`<a class="pt${p.neon?' pt-neon':''}" href="${p.href}" style="--dx:${f(nx*5)}px;--dy:${f(ny*5)}px;--i:${i+1}" aria-label="${p.href==='#find'?'검색 — 기관 이름이나 하고 싶은 일로 검색해 보세요':p.l.join(' ')}">${glow}<path class="seg" d="${d}" fill="url(#pg${i})" stroke="url(#pg${i})" stroke-width="${round*2}"/>${t}</a>`;
   });
   const hex='M'+V.map(v=>v.map(n=>f(n*0.94)).join(' ')).join('L')+'Z';
   g1+=`<a class="pt ctr-a" href="#guide" aria-label="졸업 후 우리 아이는? — 한눈에 보는 졸업 후 갈 수 있는 곳"><path class="seg" d="${hex}" fill="url(#gc)" stroke="url(#gc)" stroke-width="18"/>
     <path d="${hex}" fill="url(#gl)" transform="scale(.82)" opacity=".6" pointer-events="none"/>
-    <text class="ctr2" x="0" y="-38">졸업 후</text>
+    <text class="ctr2" x="0" y="-34">졸업 후</text>
     <text class="ctr" x="0" y="4">우리 아이는?</text>
-    <g class="ctr-go"><rect x="-62" y="34" width="124" height="30" rx="15"/><text class="ctr3" x="0" y="49.5">한눈에 보기 →</text></g></a>`;
-  return `<svg class="star" viewBox="-300 -318 600 636" role="navigation" aria-label="진로·진학정보 전체 도표"><defs>${defs}
+    <g class="ctr-go"><rect x="-58" y="30" width="116" height="28" rx="14"/><text class="ctr3" x="0" y="44.5">한눈에 보기 →</text></g></a>`;
+  return `<svg class="star" viewBox="-292 -322 584 644" role="navigation" aria-label="진로·진학정보 전체 도표"><defs>${defs}
     <radialGradient id="gc" cx=".38" cy=".28" r=".85"><stop offset="0" stop-color="#43c35a"/><stop offset=".55" stop-color="#1f9e3b"/><stop offset="1" stop-color="#0d5326"/></radialGradient>
     <radialGradient id="gl" cx=".35" cy=".2" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
     <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#1d4a2c" flood-opacity=".16"/></filter>
-    <filter id="nglow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="7"/></filter></defs>
+    <filter id="nglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter></defs>
     <g filter="url(#sh)">${g1}</g></svg>`;
 }
 
