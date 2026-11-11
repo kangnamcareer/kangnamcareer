@@ -392,6 +392,7 @@ td b{font-weight:700}
 .org-b .org-sub ul{padding:8px 10px 10px}
 .org-b.hot{border:2.5px solid #e53935;overflow:visible;animation:hotblink 1.3s ease-in-out infinite}
 .org-b.hot .org-h{border-radius:16px 16px 0 0}
+.agetag{display:inline-block;vertical-align:1px;margin-left:5px;font-style:normal;font-size:.78em;font-weight:800;color:#fff;background:#e53935;border-radius:99px;padding:1px 8px;letter-spacing:0}
 .hot-tag{display:inline-block;vertical-align:2px;margin-left:6px;font-style:normal;font-size:11px;font-weight:800;color:#fff;background:#e53935;border-radius:99px;padding:2px 7px;letter-spacing:0}
 .org-b li.org-sub.hot{border:2.5px solid #e53935;background:#fff6f5;animation:hotblink 1.3s ease-in-out infinite}
 .org-sub.hot .sg-h{color:#c62828}
@@ -720,7 +721,7 @@ const S = [
   blocks:[
   {id:'unemp', type:'tree', top:1, title:'미취업·미진학 시 지역사회 생활 유형', meta:'항목을 누르면 지도·목록으로 가요', root:'미취업·미진학 시 지역사회 생활 유형', rootSub:'일하지 않을 때도 지역에서 배우고 생활할 수 있어요', items:[
     ['거주시설',[['단기거주<wbr>시설','siseol','gg-res','단기거주시설'],['공동생활가정(그룹홈)','siseol','gg-res','공동생활가정']],'','home','생활하며 지내는 곳',1],
-    ['지역사회 재활시설',[{g:'교육·훈련 기관',items:[['장애인복지관','siseol','local','복지관'],['발달장애인<wbr>훈련센터','hullyeon','dtc-map'],['직업적응<wbr>훈련시설','chwieop','rehab','직업적응훈련시설']]},{g:'낮 활동 기관',hot:1,items:[['주간활동<wbr>시설','bokji','local','주간활동'],['주간이용<wbr>센터','siseol','local','주간이용']]}],'','book','낮 동안 다니며 배우는 곳'],
+    ['지역사회 재활시설',[{g:'교육·훈련 기관',items:[['장애인복지관','siseol','local','복지관'],['발달장애인<wbr>훈련센터','hullyeon','dtc-map'],['직업적응<wbr>훈련시설','chwieop','rehab','직업적응훈련시설']]},{g:'낮 활동 기관',hot:1,items:[['주간활동<wbr>서비스<wbr>(청소년, 성인)','bokji','local','주간활동'],['주간이용<wbr>센터','siseol','local','주간이용'],['발달장애인 긴급돌봄 서비스','bokji','emg']]}],'','book','낮 동안 다니며 배우는 곳'],
     ['가정',[['가정에서 생활하며 복지서비스 이용','bokji','local']],'','heart','집에서 지내는 경우',1]
   ]},
   {id:'day', type:'places', kind:'tel', title:'주간이용센터', items:[
@@ -790,7 +791,7 @@ const S = [
     ['이용 제한이 있는 사람',['장애인거주시설에서 생활하는 사람','전문적인 의료지원이 필요한 사람(주사, 석션, 투석 등)','감염병 질환이 있는 사람','가족이나 친척이 없는 사람']],
     ['서비스 신청 방법 및 이용 비용 등 자세한 문의',['경기발달장애인지원센터 (대표전화) @031-548-1393','경기발달장애인긴급돌봄센터: 지원센터로 먼저 문의하세요']]
   ]},
-  {id:'after', type:'places', kind:'tel', title:'발달장애인 방과후활동서비스', items:[
+  {id:'after', type:'places', kind:'tel', title:'발달장애인 방과후활동서비스', age:'청소년', items:[
     ['예지원가족발달연구소','','처인','031-322-8485'],
     ['사단법인 반딧불이','','처인','070-4742-3775'],
     ['(사)용인 CYA부설 마음드림심리상담센터','','기흥','031-282-4231'],
@@ -803,7 +804,7 @@ const S = [
     ['주스아이아동발달연구소','','기흥','010-3630-9531'],
     ['라온아동발달센터','','기흥','031-216-4474 · 010-8272-4474']
   ]},
-  {id:'daytime', type:'places', kind:'tel', title:'발달장애인 주간활동서비스', items:[
+  {id:'daytime', type:'places', kind:'tel', title:'발달장애인 주간활동서비스', age:'성인', items:[
     ['예지원가족발달연구소','','처인','031-322-8485'],
     ['사단법인 반딧불이','','처인','070-4742-3775'],
     ['(사)용인 CYA부설 마음드림심리상담센터','','기흥','031-282-4231'],
@@ -1022,7 +1023,7 @@ function mapBlock(scope, sel, count, groups){
       shown++;
       dots+=`<circle class="dot${sel&&sel!==x[2]?' off':''}" style="fill:${col}" data-name="${esc(x[0])}" data-cat="${gr.b.id}" data-gu="${x[2]}" cx="${cx}" cy="${cy}" r="2.3"><title>${esc(x[0])} · ${gr.b.title}</title></circle>`;
     });
-    legend.push(`<li><i style="background:${col}"></i>${gr.b.title}<b>${shown}</b></li>`);
+    legend.push(`<li><i style="background:${col}"></i>${gr.b.title}${gr.b.age?`<em class="agetag">${gr.b.age}</em>`:''}<b>${shown}</b></li>`);
   });
   return `<div class="ymap-wrap">
     <div class="ymap">
@@ -1068,7 +1069,7 @@ function placeCard(x, cat){
 }
 function placeGroups(groups, showSec){
   let h='';
-  groups.forEach(g=>{ h+=`<section class="pg"><h4><i class="cdot" style="background:${catColor(g.b.id)}"></i>${g.b.title} <small>${showSec?g.s.title+' · ':''}${g.items.length}곳</small></h4><ul class="pcards">${g.items.map(x=>placeCard(x,g.b.id)).join('')}</ul></section>`; });
+  groups.forEach(g=>{ h+=`<section class="pg"><h4><i class="cdot" style="background:${catColor(g.b.id)}"></i>${g.b.title}${g.b.age?`<em class="agetag">${g.b.age}</em>`:''} <small>${showSec?g.s.title+' · ':''}${g.items.length}곳</small></h4><ul class="pcards">${g.items.map(x=>placeCard(x,g.b.id)).join('')}</ul></section>`; });
   return h;
 }
 const GUSTATE={};
